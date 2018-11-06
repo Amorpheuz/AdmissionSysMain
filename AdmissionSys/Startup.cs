@@ -48,6 +48,7 @@ namespace AdmissionSys
 
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
+            services.Configure<SMSoptions>(Configuration);
         }
         private async Task CreateRoles(IServiceProvider serviceProvider)
         {
