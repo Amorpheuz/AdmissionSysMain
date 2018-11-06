@@ -1,0 +1,260 @@
+﻿@page
+@model IndexModel
+@{
+}
+
+<h2>Index</h2>
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <h3>All The Users with Applicant Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleApplicant)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <form method="POST">
+                    <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                    <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                    <input type="hidden" name="curRole" value="Applicant" />
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </form>
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<table class="table">
+    <h3>All The Users with Manager Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleManager)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <form method="POST">
+                        <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                        <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                        <input type="hidden" name="curRole" value="Manager" />
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </form>
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<table class="table">
+    <h3>All The Users with Admin Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleAdmin)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <form method="POST">
+                        <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                        <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                        <input type="hidden" name="curRole" value="Admin" />
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </form>
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<table class="table">
+    <h3>All The Users with Approver Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleApprover)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <form method="POST">
+                        <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                        <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                        <input type="hidden" name="curRole" value="Approver" />
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </form>
+                </td>
+
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>
+<table class="table">
+    <h3>All The Users with Fees Acceptor Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleFeesAcceptor)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <form method="POST">
+                    <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                    <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                    <input type="hidden" name="curRole" value="FeesAcceptor" />
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </form>
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
+<table class="table">
+    <h3>All The Users with Verifier Role</h3>
+    <thead>
+        <tr>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.usersofRoleVerifier)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <form method="POST">
+                    <select name="Roles" asp-items="@new SelectList(Model.Roles)"></select>
+                    <input type="hidden" name="UserID" value="@Html.DisplayFor(modelItem=>item.Id)" />
+                    <input type="hidden" name="curRole" value="Verifier" />
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </form>
+            </td>
+
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+
+    </tbody>
+</table>
