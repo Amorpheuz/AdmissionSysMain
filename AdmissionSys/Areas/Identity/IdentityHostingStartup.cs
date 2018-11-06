@@ -19,7 +19,10 @@ namespace AdmissionSys.Areas.Identity
                     options.UseNpgsql(
                         context.Configuration.GetConnectionString("AdmissionSysIdentityDbContextConnection")));
 
-                services.AddIdentity<NuvAdUser, IdentityRole>()
+                services.AddIdentity<NuvAdUser, IdentityRole>(config =>
+                {
+                    config.SignIn.RequireConfirmedEmail = true;
+                })
                     .AddEntityFrameworkStores<AdmissionSysIdentityDbContext>()
                 .AddDefaultTokenProviders()
                  .AddDefaultUI();

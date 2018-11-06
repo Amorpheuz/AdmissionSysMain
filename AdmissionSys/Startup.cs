@@ -13,6 +13,8 @@ using AdmissionSys.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using AdmissionSys.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using AdmissionSys.Services;
 
 namespace AdmissionSys
 {
@@ -43,6 +45,9 @@ namespace AdmissionSys
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddSingleton<IEmailSender, EmailSender>();
+            services.Configure<AuthMessageSenderOptions>(Configuration);
         }
         private async Task CreateRoles(IServiceProvider serviceProvider)
         {
