@@ -19,8 +19,10 @@ namespace AdmissionSys.Areas.Identity
                     options.UseNpgsql(
                         context.Configuration.GetConnectionString("AdmissionSysIdentityDbContextConnection")));
 
-                services.AddDefaultIdentity<NuvAdUser>()
-                    .AddEntityFrameworkStores<AdmissionSysIdentityDbContext>();
+                services.AddIdentity<NuvAdUser, IdentityRole>()
+                    .AddEntityFrameworkStores<AdmissionSysIdentityDbContext>()
+                .AddDefaultTokenProviders()
+                 .AddDefaultUI();
             });
         }
     }
