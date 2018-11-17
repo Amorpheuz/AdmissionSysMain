@@ -1,0 +1,21 @@
+﻿@page
+@model confirmonregisterModel
+@{
+    ViewData["Title"] = "Confirm email";
+}
+<div>
+    <p>
+        Please check your Email, and confirm it by clicking on the link provided in Email.
+    </p>
+</div>
+<div>
+    <p>
+        We have sent you OTP on your provided Phone Number...Please Enter your OTP below:
+    </p>
+    <form method="post">
+        <p>Enter the verify Token received as SMS here:</p><br>
+        <input type="text" name="verifyToken" />
+        <input type="hidden" name="userId" value="@ViewData["userId"]" />
+        <input type="submit" value="Verify" class="btn btn-default" />
+    </form>
+</div>

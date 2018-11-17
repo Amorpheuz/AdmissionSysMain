@@ -22,7 +22,7 @@ namespace AdmissionSys.Areas.Identity
                 services.AddIdentity<NuvAdUser, IdentityRole>(config =>
                 {
                     config.SignIn.RequireConfirmedEmail = true;
-                    //config.SignIn.RequireConfirmedPhoneNumber = true;
+                    config.SignIn.RequireConfirmedPhoneNumber = true;
                 })
                     .AddEntityFrameworkStores<AdmissionSysIdentityDbContext>()
                 .AddDefaultTokenProviders()

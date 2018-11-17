@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionSys.Areas.Identity.Pages.Account.Manage
+namespace AdmissionSys.Areas.Identity.Pages.Account
 {
     public class PhoneVerifyModel : PageModel
     {

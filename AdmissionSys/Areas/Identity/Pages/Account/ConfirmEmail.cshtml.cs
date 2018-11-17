@@ -19,6 +19,8 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
         {
             _userManager = userManager;
         }
+        //public string ConfirmResult;
+
 
         public async Task<IActionResult> OnGetAsync(string userId, string code)
         {
@@ -34,11 +36,21 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
             }
 
             var result = await _userManager.ConfirmEmailAsync(user, code);
-            if (!result.Succeeded)
+           
+             if(result.Succeeded && user.PhoneNumberConfirmed)
+            {
+            ViewData["ConfirmResult"] = "Thank You for confirming your email, and Phone Number. Go Ahead and <a href='./Login'> Login by clicking here</a>";
+              
+            }
+            else if(result.Succeeded && !user.PhoneNumberConfirmed)
+            {
+                ViewData["ConfirmResult"] = "Thank You for confirming your email, please confirm your Phone Number too and try to login agian.";
+             
+            }
+            else
             {
                 throw new InvalidOperationException($"Error confirming email for user with ID '{userId}':");
             }
-
             return Page();
         }
     }
