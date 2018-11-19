@@ -15,6 +15,7 @@ using Microsoft.Extensions.DependencyInjection;
 using AdmissionSys.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using AdmissionSys.Services;
+using AdmissionSys.Models;
 
 namespace AdmissionSys
 {
@@ -49,6 +50,9 @@ namespace AdmissionSys
             services.AddSingleton<IEmailSender, EmailSender>();
             services.Configure<AuthMessageSenderOptions>(Configuration);
             services.Configure<SMSoptions>(Configuration);
+
+            services.AddDbContext<AdmissionSysContext>(options =>
+                    options.UseNpgsql(Configuration.GetConnectionString("AdmissionSysContext")));
         }
         private async Task CreateRoles(IServiceProvider serviceProvider)
         {

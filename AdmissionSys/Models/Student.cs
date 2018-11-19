@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AdmissionSys.Areas.Identity.Data;
+using Microsoft.AspNetCore.Identity;
 
 namespace AdmissionSys.Models
 {
@@ -123,9 +124,6 @@ namespace AdmissionSys.Models
         public string PHStatus { get; set; } //make checkbox
 
         public string userID { get; set; }
-
-        [ForeignKey("userID")]
-        public NuvAdUser NuvAdUser { get; set; }
 
         public ICollection<Documents> Documents { get; set; }
         public ICollection<AcademicRecord> AcademicRecords { get; set; }

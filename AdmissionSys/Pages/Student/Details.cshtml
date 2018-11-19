@@ -1,0 +1,151 @@
+﻿@page
+@model AdmissionSys.Pages.Student.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Student</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.City)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.PostalCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.PostalCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.State)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.State)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Nationality)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.Nationality)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Gender)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.Gender)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentGuradianName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentGuradianName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.RelWithGuardian)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.RelWithGuardian)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.BloodGroup)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.BloodGroup)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.DateOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.DateOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.ResidencePhone)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.ResidencePhone)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.PlaceOfBirth)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.PlaceOfBirth)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.GuardianMobileNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.GuardianMobileNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.ApplicantsMobileNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.ApplicantsMobileNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.FamilyIncome)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.FamilyIncome)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentSignature)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentSignature)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.StudentPhoto)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.StudentPhoto)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.AadharNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.AadharNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.Caste)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.Caste)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.GuradianOccupation)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.GuradianOccupation)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Student.PHStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Student.PHStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Student.StudentID">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
