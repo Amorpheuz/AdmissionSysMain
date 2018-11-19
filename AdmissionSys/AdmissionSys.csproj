@@ -22,6 +22,7 @@
     <Folder Include="wwwroot\lib\jsMain\" />
     <Folder Include="wwwroot\lib\cssMain\" />
     <Folder Include="wwwroot\lib\temp\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 
 </Project>
