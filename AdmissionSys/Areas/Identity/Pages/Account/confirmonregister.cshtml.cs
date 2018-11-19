@@ -32,31 +32,5 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
             ViewData["userId"] = userId;
             return Page();
         }
-
-        public async Task<ActionResult> OnPostAsync()
-        {
-            string userId = Request.Form["userId"].ToString();
-            if (userId == null)
-            {
-                return RedirectToPage("/Index");
-            }
-
-            var user = await userManager.FindByIdAsync(userId);
-            if (user == null)
-            {
-                return NotFound($"Unable to load user with ID '{userId}'.");
-            }
-           
-            string token = Request.Form["verifyToken"].ToString();
-            IdentityResult result = await userManager.ChangePhoneNumberAsync(user, user.PhoneNumber, token);
-            if (result.Succeeded)
-            {
-                return Redirect($"./ConfirmPhoneNumber?userId={userId}");
-            }
-            else
-            {
-                return Redirect("../../Error");
-            }
-        }
     }
 }

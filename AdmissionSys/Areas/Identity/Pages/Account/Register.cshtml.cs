@@ -19,29 +19,29 @@ using Twilio.Types;
 namespace AdmissionSys.Areas.Identity.Pages.Account
 {
     [AllowAnonymous]
-    public class RegisterModel : PageModel, ISmsSender
+    public class RegisterModel : PageModel // ISmsSender
     {
         private readonly SignInManager<NuvAdUser> _signInManager;
         private readonly UserManager<NuvAdUser> _userManager;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
-        private readonly ISmsSender _smsSender;
+       // private readonly ISmsSender _smsSender;
 
         public RegisterModel(
             UserManager<NuvAdUser> userManager,
             SignInManager<NuvAdUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender,
-        IOptions<SMSoptions> optionsAccessor)
+            IEmailSender emailSender
+      )
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
-            Options = optionsAccessor.Value;
+           
         }
 
-        public SMSoptions Options { get; }
+       
 
         [BindProperty]
         public InputModel Input { get; set; }
@@ -90,9 +90,9 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
                     await _userManager.AddToRoleAsync(user, "Applicant");
                     _logger.LogInformation("User assigned role of Memeber");
 
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var codeSMS = await _userManager.GenerateChangePhoneNumberTokenAsync(user, user.PhoneNumber);
-                    await SendSmsAsync(user.PhoneNumber, codeSMS);
+                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                   // var codeSMS = await _userManager.GenerateChangePhoneNumberTokenAsync(user, user.PhoneNumber);
+                    //await SendSmsAsync(user.PhoneNumber, codeSMS);
 
                     var callbackUrl = Url.Page(
                         "/Account/ConfirmEmail",
@@ -116,20 +116,20 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
             return Page();
         }
 
-        public Task SendSmsAsync(string number, string message)
-        {
+       // public Task SendSmsAsync(string number, string message)
+       // {
             // Plug in your SMS service here to send a text message.
             // Your Account SID from twilio.com/console
-            var accountSid = Options.SMSAccountIdentification;
+         //   var accountSid = Options.SMSAccountIdentification;
             // Your Auth Token from twilio.com/console
-            var authToken = Options.SMSAccountPassword;
+        //    var authToken = Options.SMSAccountPassword;
 
-            TwilioClient.Init(accountSid, authToken);
+          //  TwilioClient.Init(accountSid, authToken);
 
-            return MessageResource.CreateAsync(
-              to: new PhoneNumber(number),
-              from: new PhoneNumber(Options.SMSAccountFrom),
-                body: $"Your Verification Code is: '{message}'");
-        }
+            //return MessageResource.CreateAsync(
+              //to: new PhoneNumber(number),
+              //from: new PhoneNumber(Options.SMSAccountFrom),
+               // body: $"Your Verification Code is: '{message}'");
+        //}
     }
 }

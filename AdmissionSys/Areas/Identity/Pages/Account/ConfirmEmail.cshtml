@@ -5,8 +5,21 @@
 }
 
 <h2>@ViewData["Title"]</h2>
+<br />
+<br />
 <div>
     <p>
         @ViewData["ConfirmResult"]
+    </p>
+    <p>
+        <br />
+        We have sent you an OTP on your provided Phone Number...Please Enter your OTP below:
+    </p>
+    <form method="post">
+        <p>Enter the verify Token received as SMS here:</p><br>
+        <input type="text" name="verifyToken" />
+        <input type="hidden" name="userId" value="@ViewData["userId"]" />&nbsp;
+        <input type="submit" value="Verify" class="btn btn-default" />
+    </form>
     </p>
 </div>

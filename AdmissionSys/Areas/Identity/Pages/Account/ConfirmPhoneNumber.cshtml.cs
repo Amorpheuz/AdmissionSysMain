@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Web;
 using AdmissionSys.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -36,13 +37,13 @@ namespace AdmissionSys.Areas.Identity.Pages.Account
                 return NotFound($"Unable to load user with ID '{userId}'.");
             }
 
-            if (!user.PhoneNumberConfirmed)
+            if (user.PhoneNumberConfirmed)
             {
-                ViewData["ConfirmResult"] = "Thank You for confirming your email, and Phone Number. Go Ahead and <a href='./Login'> Login by clicking here</a>";
+                ViewData["ConfirmResult"] = HttpUtility.HtmlDecode("Thank You for confirming your email, and Phone Number. Go Ahead and <a href='./Login'> Login by clicking here</a>");
             }
             else
             {
-                ViewData["ConfirmResult"] = "Thank You for confirming your Phone Number, Please cofirm your email too by clicking on a link provided to you on your provided email ID.. and then login.";
+                ViewData["ConfirmResult"] = HttpUtility.HtmlDecode("Thank You for confirming your Phone Number, Please cofirm your email too by clicking on a link provided to you on your provided email ID.. and then login.");
             }
 
             return Page();

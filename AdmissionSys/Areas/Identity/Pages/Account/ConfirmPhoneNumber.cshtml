@@ -4,8 +4,10 @@
     ViewData["Title"] = "Confirm Phone Number";
 }
 <h2>@ViewData["Title"]</h2>
+<br />
+<br />
 <div>
     <p>
-        @ViewData["ConfirmResult"]
+        @Html.Raw(ViewData["ConfirmResult"])
     </p>
 </div>
