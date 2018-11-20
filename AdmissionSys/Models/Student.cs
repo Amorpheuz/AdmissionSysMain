@@ -137,7 +137,6 @@ namespace AdmissionSys.Models
 
         [Required(ErrorMessage = "Please Specify Your State")]
         [Display(Name = "State")]
-        [StringLength(25, ErrorMessage = "State should not have more than 25 characters")]
         public State? State { get; set; }
 
         [Required(ErrorMessage = "Please Specify Your Nationality")]

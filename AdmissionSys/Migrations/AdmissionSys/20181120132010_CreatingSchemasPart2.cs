@@ -4,17 +4,18 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AdmissionSys.Migrations.AdmissionSys
 {
-    public partial class CreatingSchemas : Migration
+    public partial class CreatingSchemasPart2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
             migrationBuilder.CreateTable(
                 name: "Programs",
                 columns: table => new
                 {
                     ProgramsID = table.Column<string>(nullable: false),
-                    ProgramName = table.Column<string>(nullable: false)
+                    ProgramName = table.Column<string>(nullable: false),
+                    IsIntakeOpen = table.Column<bool>(nullable: false),
+                    DocsRequired = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -30,12 +31,12 @@ namespace AdmissionSys.Migrations.AdmissionSys
                     StudentAddress = table.Column<string>(maxLength: 500, nullable: false),
                     City = table.Column<string>(maxLength: 25, nullable: false),
                     PostalCode = table.Column<string>(nullable: false),
-                    State = table.Column<string>(maxLength: 25, nullable: false),
+                    State = table.Column<int>(maxLength: 25, nullable: false),
                     Nationality = table.Column<string>(maxLength: 25, nullable: false),
                     Gender = table.Column<int>(nullable: false),
                     StudentGuradianName = table.Column<string>(maxLength: 30, nullable: false),
                     RelWithGuardian = table.Column<string>(nullable: false),
-                    BloodGroup = table.Column<string>(nullable: false),
+                    BloodGroup = table.Column<int>(nullable: false),
                     DateOfBirth = table.Column<DateTime>(nullable: false),
                     ResidencePhone = table.Column<string>(nullable: true),
                     PlaceOfBirth = table.Column<string>(maxLength: 25, nullable: false),
@@ -62,22 +63,20 @@ namespace AdmissionSys.Migrations.AdmissionSys
                 });
 
             migrationBuilder.CreateTable(
-                name: "AcademicYear",
+                name: "Fees",
                 columns: table => new
                 {
-                    AcademicYearID = table.Column<int>(nullable: false)
+                    FeesID = table.Column<int>(nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    AcaYear = table.Column<DateTime>(nullable: false),
-                    EndDate = table.Column<DateTime>(nullable: false),
-                    StartDate = table.Column<DateTime>(nullable: false),
-                    IntakeCapacity = table.Column<int>(nullable: false),
+                    FeesAmount = table.Column<int>(nullable: false),
+                    FeesType = table.Column<string>(nullable: false),
                     ProgramsID = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_AcademicYear", x => x.AcademicYearID);
+                    table.PrimaryKey("PK_Fees", x => x.FeesID);
                     table.ForeignKey(
-                        name: "FK_AcademicYear_Programs_ProgramsID",
+                        name: "FK_Fees_Programs_ProgramsID",
                         column: x => x.ProgramsID,
                         principalTable: "Programs",
                         principalColumn: "ProgramsID",
@@ -113,11 +112,41 @@ namespace AdmissionSys.Migrations.AdmissionSys
                 });
 
             migrationBuilder.CreateTable(
+                name: "ApplicationList",
+                columns: table => new
+                {
+                    ApplicationListID = table.Column<int>(nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
+                    ApplicationCategory = table.Column<string>(nullable: false),
+                    Status = table.Column<string>(nullable: false),
+                    PrioAreaOfResearch = table.Column<string>(nullable: true),
+                    ProgramsID = table.Column<string>(nullable: true),
+                    StudentID = table.Column<int>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ApplicationList", x => x.ApplicationListID);
+                    table.ForeignKey(
+                        name: "FK_ApplicationList_Programs_ProgramsID",
+                        column: x => x.ProgramsID,
+                        principalTable: "Programs",
+                        principalColumn: "ProgramsID",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ApplicationList_Student_StudentID",
+                        column: x => x.StudentID,
+                        principalTable: "Student",
+                        principalColumn: "StudentID",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Documents",
                 columns: table => new
                 {
                     DocumentsID = table.Column<string>(nullable: false),
                     DocumentPath = table.Column<string>(nullable: true),
+                    DocumentType = table.Column<int>(nullable: true),
                     StudentID = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
@@ -131,49 +160,15 @@ namespace AdmissionSys.Migrations.AdmissionSys
                         onDelete: ReferentialAction.Restrict);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "ApplicationList",
-                columns: table => new
-                {
-                    ApplicationListID = table.Column<int>(nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn),
-                    ApplicationCategory = table.Column<string>(nullable: false),
-                    Status = table.Column<string>(nullable: false),
-                    PrioAreaOfResearch = table.Column<string>(nullable: true),
-                    StudentID = table.Column<int>(nullable: true),
-                    AcademicYearID = table.Column<int>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ApplicationList", x => x.ApplicationListID);
-                    table.ForeignKey(
-                        name: "FK_ApplicationList_AcademicYear_AcademicYearID",
-                        column: x => x.AcademicYearID,
-                        principalTable: "AcademicYear",
-                        principalColumn: "AcademicYearID",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ApplicationList_Student_StudentID",
-                        column: x => x.StudentID,
-                        principalTable: "Student",
-                        principalColumn: "StudentID",
-                        onDelete: ReferentialAction.Restrict);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_AcademicRecord_StudentID",
                 table: "AcademicRecord",
                 column: "StudentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_AcademicYear_ProgramsID",
-                table: "AcademicYear",
-                column: "ProgramsID");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ApplicationList_AcademicYearID",
+                name: "IX_ApplicationList_ProgramsID",
                 table: "ApplicationList",
-                column: "AcademicYearID");
+                column: "ProgramsID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_ApplicationList_StudentID",
@@ -186,9 +181,9 @@ namespace AdmissionSys.Migrations.AdmissionSys
                 column: "StudentID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Student_userID",
-                table: "Student",
-                column: "userID");
+                name: "IX_Fees_ProgramsID",
+                table: "Fees",
+                column: "ProgramsID");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -203,16 +198,13 @@ namespace AdmissionSys.Migrations.AdmissionSys
                 name: "Documents");
 
             migrationBuilder.DropTable(
-                name: "AcademicYear");
+                name: "Fees");
 
             migrationBuilder.DropTable(
                 name: "Student");
 
             migrationBuilder.DropTable(
                 name: "Programs");
-
-            migrationBuilder.DropTable(
-                name: "IdentityUser");
         }
     }
 }

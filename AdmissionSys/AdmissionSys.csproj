@@ -19,6 +19,7 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.1" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="TestFolder\" />
     <Folder Include="wwwroot\lib\jsMain\" />
     <Folder Include="wwwroot\lib\cssMain\" />
     <Folder Include="wwwroot\lib\temp\" />

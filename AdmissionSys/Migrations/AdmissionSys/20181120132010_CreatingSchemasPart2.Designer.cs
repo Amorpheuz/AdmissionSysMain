@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace AdmissionSys.Migrations.AdmissionSys
 {
     [DbContext(typeof(AdmissionSysContext))]
-    [Migration("20181119212014_CreatingSchemas")]
-    partial class CreatingSchemas
+    [Migration("20181120132010_CreatingSchemasPart2")]
+    partial class CreatingSchemasPart2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,39 +64,17 @@ namespace AdmissionSys.Migrations.AdmissionSys
                     b.ToTable("AcademicRecord");
                 });
 
-            modelBuilder.Entity("AdmissionSys.Models.AcademicYear", b =>
-                {
-                    b.Property<int>("AcademicYearID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("AcaYear");
-
-                    b.Property<DateTime>("EndDate");
-
-                    b.Property<int>("IntakeCapacity");
-
-                    b.Property<string>("ProgramsID");
-
-                    b.Property<DateTime>("StartDate");
-
-                    b.HasKey("AcademicYearID");
-
-                    b.HasIndex("ProgramsID");
-
-                    b.ToTable("AcademicYear");
-                });
-
             modelBuilder.Entity("AdmissionSys.Models.ApplicationList", b =>
                 {
                     b.Property<int>("ApplicationListID")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("AcademicYearID");
-
                     b.Property<string>("ApplicationCategory")
                         .IsRequired();
 
                     b.Property<string>("PrioAreaOfResearch");
+
+                    b.Property<string>("ProgramsID");
 
                     b.Property<string>("Status")
                         .IsRequired();
@@ -105,7 +83,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.HasKey("ApplicationListID");
 
-                    b.HasIndex("AcademicYearID");
+                    b.HasIndex("ProgramsID");
 
                     b.HasIndex("StudentID");
 
@@ -119,6 +97,8 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.Property<string>("DocumentPath");
 
+                    b.Property<int?>("DocumentType");
+
                     b.Property<int?>("StudentID");
 
                     b.HasKey("DocumentsID");
@@ -128,9 +108,33 @@ namespace AdmissionSys.Migrations.AdmissionSys
                     b.ToTable("Documents");
                 });
 
+            modelBuilder.Entity("AdmissionSys.Models.Fees", b =>
+                {
+                    b.Property<int>("FeesID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("FeesAmount");
+
+                    b.Property<string>("FeesType")
+                        .IsRequired();
+
+                    b.Property<string>("ProgramsID");
+
+                    b.HasKey("FeesID");
+
+                    b.HasIndex("ProgramsID");
+
+                    b.ToTable("Fees");
+                });
+
             modelBuilder.Entity("AdmissionSys.Models.Programs", b =>
                 {
-                    b.Property<string>("ProgramsID");
+                    b.Property<string>("ProgramsID")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("DocsRequired");
+
+                    b.Property<bool>("IsIntakeOpen");
 
                     b.Property<string>("ProgramName")
                         .IsRequired();
@@ -149,8 +153,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
                     b.Property<string>("ApplicantsMobileNumber")
                         .IsRequired();
 
-                    b.Property<string>("BloodGroup")
-                        .IsRequired();
+                    b.Property<int>("BloodGroup");
 
                     b.Property<int?>("Caste");
 
@@ -189,8 +192,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.Property<string>("ResidencePhone");
 
-                    b.Property<string>("State")
-                        .IsRequired()
+                    b.Property<int>("State")
                         .HasMaxLength(25);
 
                     b.Property<string>("StudentAddress")
@@ -215,47 +217,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.HasKey("StudentID");
 
-                    b.HasIndex("userID");
-
                     b.ToTable("Student");
-                });
-
-            modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUser", b =>
-                {
-                    b.Property<string>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("AccessFailedCount");
-
-                    b.Property<string>("ConcurrencyStamp");
-
-                    b.Property<string>("Email");
-
-                    b.Property<bool>("EmailConfirmed");
-
-                    b.Property<bool>("LockoutEnabled");
-
-                    b.Property<DateTimeOffset?>("LockoutEnd");
-
-                    b.Property<string>("NormalizedEmail");
-
-                    b.Property<string>("NormalizedUserName");
-
-                    b.Property<string>("PasswordHash");
-
-                    b.Property<string>("PhoneNumber");
-
-                    b.Property<bool>("PhoneNumberConfirmed");
-
-                    b.Property<string>("SecurityStamp");
-
-                    b.Property<bool>("TwoFactorEnabled");
-
-                    b.Property<string>("UserName");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("IdentityUser");
                 });
 
             modelBuilder.Entity("AdmissionSys.Models.AcademicRecord", b =>
@@ -265,18 +227,11 @@ namespace AdmissionSys.Migrations.AdmissionSys
                         .HasForeignKey("StudentID");
                 });
 
-            modelBuilder.Entity("AdmissionSys.Models.AcademicYear", b =>
-                {
-                    b.HasOne("AdmissionSys.Models.Programs", "Programs")
-                        .WithMany("AcademicYears")
-                        .HasForeignKey("ProgramsID");
-                });
-
             modelBuilder.Entity("AdmissionSys.Models.ApplicationList", b =>
                 {
-                    b.HasOne("AdmissionSys.Models.AcademicYear", "AcademicYear")
+                    b.HasOne("AdmissionSys.Models.Programs", "Programs")
                         .WithMany("ApplicationLists")
-                        .HasForeignKey("AcademicYearID");
+                        .HasForeignKey("ProgramsID");
 
                     b.HasOne("AdmissionSys.Models.Student", "Student")
                         .WithMany("ApplicationLists")
@@ -290,11 +245,11 @@ namespace AdmissionSys.Migrations.AdmissionSys
                         .HasForeignKey("StudentID");
                 });
 
-            modelBuilder.Entity("AdmissionSys.Models.Student", b =>
+            modelBuilder.Entity("AdmissionSys.Models.Fees", b =>
                 {
-                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
-                        .WithMany()
-                        .HasForeignKey("userID");
+                    b.HasOne("AdmissionSys.Models.Programs", "Programs")
+                        .WithMany("Fees")
+                        .HasForeignKey("ProgramsID");
                 });
 #pragma warning restore 612, 618
         }

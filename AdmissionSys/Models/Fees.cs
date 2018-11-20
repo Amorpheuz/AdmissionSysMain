@@ -18,6 +18,6 @@ namespace AdmissionSys.Models
 
         public string ProgramsID { get; set; }
 
-        public Program Program { get; set; }
+        public Programs Programs { get; set; }
     }
 }
