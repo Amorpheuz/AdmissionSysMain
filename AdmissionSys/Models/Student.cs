@@ -17,6 +17,100 @@ namespace AdmissionSys.Models
       General, SC, ST, OBC, Other
     }
 
+    public enum BloodGroup
+    {
+        [Display(Name = "A Positive")]
+        APos,
+
+        [Display(Name = "A Negative")]
+        ANeg,
+
+        [Display(Name = "B Positive")]
+        BPos,
+
+        [Display(Name = "B Negative")]
+        BNeg,
+
+        [Display(Name = "AB Positive")]
+        ABPos,
+
+        [Display(Name = "AB Negative")]
+        ABNes,
+
+        [Display(Name = "O Positive")]
+        OPos,
+
+        [Display(Name = "O Negative")]
+        ONes
+    }
+
+    public enum State
+    {
+        [Display(Name = "Andhra Pradesh")]
+        AndhraPradesh,
+
+        [Display(Name = "Arunachal Pradesh")]
+        ArunachalPradesh,
+
+        Assam,
+        Bihar,
+        Chhattisgarh,
+        Goa,
+        Gujarat,
+        Haryana,
+
+        [Display(Name = "Himachal Pradesh")]
+        HimachalPradesh,
+
+        [Display(Name = "Jammu And Kashmir")]
+        JammuAndKashmir,
+
+        Jharkhand,
+        Karnataka,
+        Kerala,
+
+        [Display(Name = "Madhya Pradesh")]
+        MadhyaPradesh,
+
+        Maharashtra,
+        Manipur,
+        Meghalaya,
+        Mizoram,
+        Nagaland,
+        Odisha,
+        Punjab,
+        Rajasthan,
+        Sikkim,
+
+        [Display(Name = "Tamil Nadu")]
+        TamilNadu,
+
+        Telangana,
+        Tripura,
+
+        [Display(Name = "Uttar Pradesh")]
+        UttarPradesh,
+
+        Uttarakhand,
+        WestBengal,
+
+        [Display(Name = "Andaman and Nicobar Islands")]
+        AndamanAndNicobar,
+
+        Chandigarh,
+
+        [Display(Name = "Dadar and Nagar Haveli")]
+        Dadar,
+
+        [Display(Name = "Daman And Diu")]
+        Daman,
+
+        Delhi,
+        Lakshadweep,
+        Puducherry
+
+    }
+    
     public class Student
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -44,7 +138,7 @@ namespace AdmissionSys.Models
         [Required(ErrorMessage = "Please Specify Your State")]
         [Display(Name = "State")]
         [StringLength(25, ErrorMessage = "State should not have more than 25 characters")]
-        public string State { get; set; }
+        public State? State { get; set; }
 
         [Required(ErrorMessage = "Please Specify Your Nationality")]
         [Display(Name = "Nationality")]
@@ -65,7 +159,7 @@ namespace AdmissionSys.Models
 
         [Required(ErrorMessage = "Please Specify Your Blood Group")]
         [Display(Name = "Blood Group")]
-        public string BloodGroup { get; set; } //make combobox
+        public BloodGroup? BloodGroup { get; set; } //make combobox
 
         [Required(ErrorMessage = "Please Specify Your Date Of Birth")]
         [Display(Name = "Date Of Birth")]

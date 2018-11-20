@@ -14,8 +14,10 @@ namespace AdmissionSys.Models
 
         [Required(ErrorMessage = "Please Specify Fees Type for the program")]
         [Display(Name = "Fees Type")]
-        public String FeesType { get; set; }
+        public string FeesType { get; set; }
 
-        public AcademicYear AcademicYear { get; set; }
+        public string ProgramsID { get; set; }
+
+        public Program Program { get; set; }
     }
 }
