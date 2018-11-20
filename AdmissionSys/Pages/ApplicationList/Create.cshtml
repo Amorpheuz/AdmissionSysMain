@@ -1,0 +1,48 @@
+﻿@page
+@model AdmissionSys.Pages.ApplicationList.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create</h2>
+
+<h4>ApplicationList</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ApplicationList.ApplicationCategory" class="control-label"></label>
+                <input asp-for="ApplicationList.ApplicationCategory" class="form-control" />
+                <span asp-validation-for="ApplicationList.ApplicationCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationList.Status" class="control-label"></label>
+                <input asp-for="ApplicationList.Status" class="form-control" />
+                <span asp-validation-for="ApplicationList.Status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationList.PrioAreaOfResearch" class="control-label"></label>
+                <input asp-for="ApplicationList.PrioAreaOfResearch" class="form-control" />
+                <span asp-validation-for="ApplicationList.PrioAreaOfResearch" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationList.ProgramsID" class="control-label"></label>
+                <select asp-for="ApplicationList.ProgramsID" class ="form-control" asp-items="ViewBag.ProgramsID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

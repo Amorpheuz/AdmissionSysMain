@@ -1,0 +1,84 @@
+﻿@page
+@model AdmissionSys.Pages.AcademicRecord.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].ExamName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].BoardOrUni)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].SchoolOrCollegeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].MeritNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].MonthYearOfPass)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].RollNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].LangOfInstruction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].ScoreValidity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AcademicRecord[0].MarksObtained)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.AcademicRecord) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ExamName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoardOrUni)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SchoolOrCollegeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MeritNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MonthYearOfPass)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RollNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LangOfInstruction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScoreValidity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarksObtained)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.AcademicRecordID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.AcademicRecordID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.AcademicRecordID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

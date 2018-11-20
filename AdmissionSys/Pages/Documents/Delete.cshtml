@@ -1,0 +1,34 @@
+﻿@page
+@model AdmissionSys.Pages.Documents.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Documents</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Documents.DocumentPath)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Documents.DocumentPath)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Documents.DocumentType)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Documents.DocumentType)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Documents.DocumentsID" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
