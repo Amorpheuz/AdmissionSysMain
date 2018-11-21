@@ -6,139 +6,229 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
 
-<h4>Student</h4>
-<hr />
 <div class="row">
-    <div class="col-md-4">
-        <form method="post">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="Student.StudentID" />
-            <div class="form-group">
-                <label asp-for="Student.StudentName" class="control-label"></label>
-                <input asp-for="Student.StudentName" class="form-control" />
-                <span asp-validation-for="Student.StudentName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.StudentAddress" class="control-label"></label>
-                <textarea asp-for="Student.StudentAddress" class="form-control"></textarea>
-                <span asp-validation-for="Student.StudentAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.City" class="control-label"></label>
-                <input asp-for="Student.City" class="form-control" />
-                <span asp-validation-for="Student.City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.PostalCode" class="control-label"></label>
-                <input asp-for="Student.PostalCode" class="form-control" />
-                <span asp-validation-for="Student.PostalCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.State" class="control-label"></label>
-                <select asp-for="Student.State" class="form-control" asp-items="Html.GetEnumSelectList<State>()"></select>
-                <span asp-validation-for="Student.State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.Nationality" class="control-label"></label>
-                <input asp-for="Student.Nationality" class="form-control" />
-                <span asp-validation-for="Student.Nationality" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.Gender" class="control-label"></label>
-                <select asp-for="Student.Gender" class="form-control" asp-items="Html.GetEnumSelectList<Gender>()"> </select>
-                <span asp-validation-for="Student.Gender" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.StudentGuradianName" class="control-label"></label>
-                <input asp-for="Student.StudentGuradianName" class="form-control" />
-                <span asp-validation-for="Student.StudentGuradianName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.RelWithGuardian" class="control-label"></label>
-                <input asp-for="Student.RelWithGuardian" class="form-control" />
-                <span asp-validation-for="Student.RelWithGuardian" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.BloodGroup" class="control-label"></label>
-                <select asp-for="Student.BloodGroup" class="form-control" asp-items="Html.GetEnumSelectList<BloodGroup>()"></select>
-                <span asp-validation-for="Student.BloodGroup" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.DateOfBirth" class="control-label"></label>
-                <input asp-for="Student.DateOfBirth" class="form-control" />
-                <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.ResidencePhone" class="control-label"></label>
-                <input asp-for="Student.ResidencePhone" class="form-control" />
-                <span asp-validation-for="Student.ResidencePhone" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.PlaceOfBirth" class="control-label"></label>
-                <input asp-for="Student.PlaceOfBirth" class="form-control" />
-                <span asp-validation-for="Student.PlaceOfBirth" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.GuardianMobileNumber" class="control-label"></label>
-                <input asp-for="Student.GuardianMobileNumber" class="form-control" />
-                <span asp-validation-for="Student.GuardianMobileNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.ApplicantsMobileNumber" class="control-label"></label>
-                <input asp-for="Student.ApplicantsMobileNumber" class="form-control" />
-                <span asp-validation-for="Student.ApplicantsMobileNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.FamilyIncome" class="control-label"></label>
-                <input asp-for="Student.FamilyIncome" class="form-control" />
-                <span asp-validation-for="Student.FamilyIncome" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.StudentSignature" class="control-label"></label>
-                <input asp-for="Student.StudentSignature" class="form-control" />
-                <span asp-validation-for="Student.StudentSignature" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.StudentPhoto" class="control-label"></label>
-                <input asp-for="Student.StudentPhoto" class="form-control" />
-                <span asp-validation-for="Student.StudentPhoto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.AadharNumber" class="control-label"></label>
-                <input asp-for="Student.AadharNumber" class="form-control" />
-                <span asp-validation-for="Student.AadharNumber" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.Caste" class="control-label"></label>
-                <select asp-for="Student.Caste" class="form-control" asp-items="Html.GetEnumSelectList<Caste>()"> </select>
-                <span asp-validation-for="Student.Caste" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.GuradianOccupation" class="control-label"></label>
-                <input asp-for="Student.GuradianOccupation" class="form-control" />
-                <span asp-validation-for="Student.GuradianOccupation" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.PHStatus" class="control-label"></label>
-                <input asp-for="Student.PHStatus" class="form-control" />
-                <span asp-validation-for="Student.PHStatus" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Student.userID" class="control-label" hidden></label>
-                <input asp-for="Student.userID" class="form-control" value="@ViewData["userId"]" type="hidden">
-                <span asp-validation-for="Student.userID" class="text-danger" hidden></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+    <div class="col-md-10 offset-md-1">
+        <h2>Edit</h2>
 
-<div>
+        <h4>Student</h4>
+        <hr />
+    <form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <input type="hidden" asp-for="Student.StudentID" />
+    <div class="form-group">
+        <label asp-for="Student.StudentName" class="control-label"></label>
+        <input asp-for="Student.StudentName" class="form-control" />
+        <small class="form-text text-muted">
+            Enter your Full Name
+        </small>
+        <span asp-validation-for="Student.StudentName" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.Gender" class="control-label"></label>
+            <select asp-for="Student.Gender" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Gender))"> </select>
+            <small class="form-text text-muted">
+                Select your Gender
+            </small>
+            <span asp-validation-for="Student.Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.BloodGroup" class="control-label"></label>
+            <select asp-for="Student.BloodGroup" class="form-control" asp-items="Html.GetEnumSelectList(typeof(BloodGroup))"></select>
+            <small class="form-text text-muted">
+                Select your Blood Group
+            </small>
+            <span asp-validation-for="Student.BloodGroup" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.AadharNumber" class="control-label"></label>
+            <input asp-for="Student.AadharNumber" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your Aadhaar number in specified format: XXXX XXXX XXXX XXXX, e.g. 9876 5432 1200 3231
+            </small>
+            <span asp-validation-for="Student.AadharNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.Caste" class="control-label"></label>
+            <select asp-for="Student.Caste" class="form-control" asp-items="Html.GetEnumSelectList(typeof(Caste))"> </select>
+            <small class="form-text text-muted">
+                Select the Caste you belong to
+            </small>
+            <span asp-validation-for="Student.Caste" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.DateOfBirth" class="control-label"></label>
+            <input asp-for="Student.DateOfBirth" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your Birth Date
+            </small>
+            <span asp-validation-for="Student.DateOfBirth" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.PlaceOfBirth" class="control-label"></label>
+            <input asp-for="Student.PlaceOfBirth" class="form-control" />
+            <small class="form-text text-muted">
+                Enter the city you were born in
+            </small>
+            <span asp-validation-for="Student.PlaceOfBirth" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.ResidencePhone" class="control-label"></label>
+            <input asp-for="Student.ResidencePhone" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your residence phone number along-with Country and STD code, e.g. 917926761706
+            </small>
+            <span asp-validation-for="Student.ResidencePhone" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.ApplicantsMobileNumber" class="control-label"></label>
+            <input asp-for="Student.ApplicantsMobileNumber" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your mobile number along-with country code, e.g. 919876543210.
+                <div class="text-primary-v3">
+                    You will be
+                    contacted via this number
+                </div>
+            </small>
+            <span asp-validation-for="Student.ApplicantsMobileNumber" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Student.StudentAddress" class="control-label"></label>
+        <textarea asp-for="Student.StudentAddress" class="form-control"></textarea>
+        <small class="form-text text-muted">
+            Enter your Residential Address
+        </small>
+        <span asp-validation-for="Student.StudentAddress" class="text-danger"></span>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.City" class="control-label"></label>
+            <input asp-for="Student.City" class="form-control" />
+            <small class="form-text text-muted">
+                Enter City of Residence
+            </small>
+            <span asp-validation-for="Student.City" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.State" class="control-label"></label>
+            <select asp-for="Student.State" class="form-control" asp-items="Html.GetEnumSelectList(typeof(State))"></select>
+            <small class="form-text text-muted">
+                Select State or Union Territory of Residence
+            </small>
+            <span asp-validation-for="Student.State" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.PostalCode" class="control-label"></label>
+            <input asp-for="Student.PostalCode" class="form-control" />
+            <small class="form-text text-muted">
+                Enter Postal Code of the area you live in
+            </small>
+            <span asp-validation-for="Student.PostalCode" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.Nationality" class="control-label"></label>
+            <input asp-for="Student.Nationality" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your Nationality, e.g. Indian
+            </small>
+            <span asp-validation-for="Student.Nationality" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.StudentGuradianName" class="control-label"></label>
+            <input asp-for="Student.StudentGuradianName" class="form-control" />
+            <small class="form-text text-muted">
+                Enter name of your Guardian
+            </small>
+            <span asp-validation-for="Student.StudentGuradianName" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.RelWithGuardian" class="control-label"></label>
+            <input asp-for="Student.RelWithGuardian" class="form-control" />
+            <small class="form-text text-muted">
+                Enter how you relate to your Guardian
+            </small>
+            <span asp-validation-for="Student.RelWithGuardian" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.GuardianMobileNumber" class="control-label"></label>
+            <input asp-for="Student.GuardianMobileNumber" class="form-control" />
+            <small class="form-text text-muted">
+                Enter mobile number of your guardian along-with country code, e.g. 919876543210
+            </small>
+            <span asp-validation-for="Student.GuardianMobileNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group col-md-6">
+            <label asp-for="Student.FamilyIncome" class="control-label"></label>
+            <input asp-for="Student.FamilyIncome" class="form-control" />
+            <small class="form-text text-muted">
+                Enter your Family Income
+            </small>
+            <span asp-validation-for="Student.FamilyIncome" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.GuradianOccupation" class="control-label"></label>
+            <input asp-for="Student.GuradianOccupation" class="form-control" />
+            <small class="form-text text-muted">
+                Enter the Occupation of your Guardian
+            </small>
+            <span asp-validation-for="Student.GuradianOccupation" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.PHStatus" class="control-label"></label>
+            <input asp-for="Student.PHStatus" class="form-control" />
+            <small class="form-text text-muted">
+                Enter the name of the kind of Physical Handicap you have, if any. Enter <kbd>None</kbd> if you don't
+            </small>
+            <span asp-validation-for="Student.PHStatus" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
+            <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+            <small class="form-text text-muted">
+                Upload an image in <kdb>png</kdb>/<kdb>jpg</kdb> format of your Signature of max size 512kB
+            </small>
+            <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
+            <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+            <small class="form-text text-muted">
+                Upload a Passport image in <kdb>png</kdb>/<kdb>jpg</kdb> format of yourself of max size 512kB, Dimensions: 35 x
+                45 mm
+            </small>
+            <span asp-validation-for="Student.StudentPhotoActual" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label asp-for="Student.userID" class="control-label" hidden></label>
+        <input asp-for="Student.userID" class="form-control" value="@ViewData["userId"]" type="hidden">
+        <span asp-validation-for="Student.userID" class="text-danger" hidden></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Save" class="btn btn-primary-v3" />
+    </div>
+    </form>
     <a asp-page="./Index">Back to List</a>
+    </div>
 </div>
 
 @section Scripts {

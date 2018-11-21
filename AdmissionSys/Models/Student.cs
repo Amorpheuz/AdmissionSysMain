@@ -182,7 +182,7 @@ namespace AdmissionSys.Models
         [Required(ErrorMessage = "Please specify guardian's contact number")]
         public string GuardianMobileNumber { get; set; }
 
-        [Display(Name = "Your Mobile Number(All admission related communication will be done on this Contact Number)")]
+        [Display(Name = "Your Mobile Number")]
         [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid phone number")]
         [Required(ErrorMessage = "Please specify your contact number")]
         [DataType(DataType.PhoneNumber)]
@@ -193,16 +193,16 @@ namespace AdmissionSys.Models
         public decimal FamilyIncome { get; set; }
 
         [DataType(DataType.Upload)]
-        [Display(Name = "Upload Your Signature(as per siganture upload guidelines mentioned)")]
+        [Display(Name = "Upload Your Signature")]
         //[Required(ErrorMessage = "Please Upload Your Signature")]
         public string StudentSignature { get; set; }
 
         [DataType(DataType.Upload)]
-        [Display(Name = "Upload Your Photo(as per photo upload guidelines mentioned)")]
+        [Display(Name = "Upload Your Photo")]
        // [Required(ErrorMessage = "Please Upload Your Photo")]
         public string StudentPhoto { get; set; }
 
-        [Display(Name = "Addhar Number")]
+        [Display(Name = "Aadhaar Number")]
         [RegularExpression(@"^\d{4}\s\d{4}\s\d{4}\s\d{4}$", ErrorMessage = "Not A Valid Aadhar Number")]
         public string AadharNumber { get; set; }
 
@@ -218,12 +218,12 @@ namespace AdmissionSys.Models
         public string PHStatus { get; set; } //make checkbox
 
         [NotMapped]
-        [Display(Name = "Upload Your Photo(as per photo upload guidelines mentioned)")]
+        [Display(Name = "Upload Your Photo")]
         [Required(ErrorMessage = "Please Upload Your Photo")]
         public IFormFile StudentPhotoActual { get; set; }
 
         [NotMapped]
-        [Display(Name = "Upload Your Signature(as per siganture upload guidelines mentioned)")]
+        [Display(Name = "Upload Your Signature")]
         [Required(ErrorMessage = "Please Upload Your Signature")]
         public IFormFile StudentSignatureActual { get; set; }
 

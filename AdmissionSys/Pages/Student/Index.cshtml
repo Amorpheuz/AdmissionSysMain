@@ -5,158 +5,164 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Index</h2>
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <table class="table table-responsive">
+            <caption>List of Students</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].StudentName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].StudentAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].PostalCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].State)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].Nationality)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].StudentGuradianName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].RelWithGuardian)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].BloodGroup)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].DateOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].ResidencePhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].PlaceOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].GuardianMobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].ApplicantsMobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].FamilyIncome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].StudentSignature)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].StudentPhoto)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].AadharNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].Caste)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].GuradianOccupation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Student[0].PHStatus)
+                    </th>
+                    <th> Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Student)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentAddress)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.City)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PostalCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.State)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nationality)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Gender)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentGuradianName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.RelWithGuardian)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BloodGroup)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ResidencePhone)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GuardianMobileNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ApplicantsMobileNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FamilyIncome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentSignature)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.StudentPhoto)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AadharNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Caste)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.GuradianOccupation)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PHStatus)
+                        </td>
+                        <td>
+                            <a asp-page="./Edit" asp-route-id="@item.StudentID">Edit</a> |
+                            <a asp-page="./Details" asp-route-id="@item.StudentID">Details</a> |
+                            <a asp-page="./Delete" asp-route-id="@item.StudentID">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].StudentName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].StudentAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].PostalCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].State)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].Nationality)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].Gender)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].StudentGuradianName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].RelWithGuardian)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].BloodGroup)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].DateOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].ResidencePhone)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].PlaceOfBirth)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].GuardianMobileNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].ApplicantsMobileNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].FamilyIncome)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].StudentSignature)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].StudentPhoto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].AadharNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].Caste)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].GuradianOccupation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Student[0].PHStatus)
-            </th>
-            <th> Options</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Student) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentAddress)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PostalCode)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nationality)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Gender)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentGuradianName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.RelWithGuardian)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.BloodGroup)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DateOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ResidencePhone)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PlaceOfBirth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GuardianMobileNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApplicantsMobileNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FamilyIncome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentSignature)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StudentPhoto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AadharNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Caste)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GuradianOccupation)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PHStatus)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.StudentID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.StudentID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.StudentID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
