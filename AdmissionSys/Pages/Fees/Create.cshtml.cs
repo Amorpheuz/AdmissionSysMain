@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AdmissionSys.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Fees
 {
+    [Authorize(Roles = "Admin")]
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

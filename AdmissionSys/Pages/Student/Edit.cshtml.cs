@@ -11,9 +11,11 @@ using AdmissionSys.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Student
 {
+    [Authorize(Roles = "Admin,Applicant")]
     public class EditModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

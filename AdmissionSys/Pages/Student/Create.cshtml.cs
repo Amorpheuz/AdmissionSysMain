@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Student
 {
+    [Authorize(Roles = "Admin,Applicant")]
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

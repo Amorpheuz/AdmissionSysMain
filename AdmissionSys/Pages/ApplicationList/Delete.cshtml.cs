@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AdmissionSys.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.ApplicationList
 {
+    [Authorize(Roles = "Applicant,Admin")]
     public class DeleteModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

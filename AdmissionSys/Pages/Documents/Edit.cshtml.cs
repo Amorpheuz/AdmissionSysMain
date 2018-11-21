@@ -7,9 +7,11 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using AdmissionSys.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Documents
 {
+    [Authorize(Roles = "Applicant,Admin")]
     public class EditModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

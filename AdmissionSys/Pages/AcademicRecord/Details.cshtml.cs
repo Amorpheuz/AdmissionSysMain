@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AdmissionSys.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.AcademicRecord
 {
+    [Authorize(Roles = "Applicant,Admin")]
     public class DetailsModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
