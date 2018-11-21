@@ -1,96 +1,161 @@
 ﻿@page
 @model IndexModel
+@using Microsoft.AspNetCore.Identity
+@using AdmissionSys.Areas.Identity.Data
+
+
+@inject SignInManager<NuvAdUser> SignInManager
+@inject UserManager<NuvAdUser> UserManager
 @{
     ViewData["Title"] = "Home page";
 }
-
-<div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
-    <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
-    <div class="carousel-inner" role="listbox">
-        <div class="item active">
-            <img src="~/images/banner1.svg" alt="ASP.NET" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how to build ASP.NET apps that can run anywhere.
-                    <a class="btn btn-primary-v3" href="https://go.microsoft.com/fwlink/?LinkID=525028&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+<div class="row mb-3">
+    <div class="col-md-4 offset-md-1">
+        <img src="http://www.urhobosocialclublagos.com/wp-content/uploads/2017/07/default-avatar-ginger-guy.png" class="rounded mx-auto d-block" height="200" />
+    </div>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-12">
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <h1 class="display-3">@UserManager.GetUserName(User)</h1>
+                }
+                else
+                {
+                    <h1 class="display-3">User Name</h1>
+                }
             </div>
         </div>
-        <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-primary-v3" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+        <div class="row">
+            <div class="col-md-3">
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" class="text-primary-v3">Manage Profile</a>
             </div>
-        </div>
-        <div class="item">
-            <img src="~/images/banner3.svg" alt="Microsoft Azure" class="img-responsive" />
-            <div class="carousel-caption" role="option">
-                <p>
-                    Learn how Microsoft's Azure cloud platform allows you to build, deploy, and scale web apps.
-                    <a class="btn btn-primary-v3" href="https://go.microsoft.com/fwlink/?LinkID=525027&clcid=0x409">
-                        Learn More
-                    </a>
-                </p>
+            <div class="col-md-3">
+                <a asp-page="/Student">Personal Information</a>
+            </div>
+            <div class="col-md-6">
+                <a asp-page="/AcademicRecord">Academic Information</a>
             </div>
         </div>
     </div>
-    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
-        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
-        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-    </a>
 </div>
-
+<hr/>
 <div class="row">
-    <div class="col-md-3">
-        <h2>Application uses</h2>
-        <ul>
-            <li>Sample pages using ASP.NET Core Razor Pages</li>
-            <li>Theming using <a href="https://go.microsoft.com/fwlink/?LinkID=398939">Bootstrap</a></li>
-        </ul>
+    <div class="col-md-10 offset-md-1">
+        <div class="card-deck mb-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Admission Application Progress</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Check your Application Progress</h6>
+                    <hr />
+                    <div class="progress" style="height: 25px;">
+                        <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                    </div>
+                    <p class="card-text">
+                        <ul>
+                            <li class="text-success">Add Personal Information</li>
+                            <li class="text-success">Add Academic Records</li>
+                            <li class="text-success">Upload Documents</li>
+                            <li class="text-danger">Attend Interview</li>
+                            <li class="text-danger">Confirm Fees Payment</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">NoticeBoard</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Important Announcements Related to Admission</h6>
+                    <hr/>
+                    <p class="card-text">
+                        <ul>
+                            <li>Lorem ipsum dolor sit amet</li>
+                            <li>Consectetur adipiscing elit</li>
+                            <li>Integer molestie lorem at massa</li>
+                            <li>Facilisis in <a href="#">pretium nisl aliquet</a></li>
+                            <li>
+                                Nulla volutpat aliquam velit
+                                <ul>
+                                    <li>Phasellus iaculis neque</li>
+                                    <li>Purus sodales ultricies</li>
+                                    <li>Vestibulum laoreet porttitor sem</li>
+                                    <li>Ac tristique libero volutpat at</li>
+                                </ul>
+                            </li>
+                            <li>Faucibus porta lacus fringilla vel</li>
+                            <li>Aenean sit amet erat nunc</li>
+                            <li>Eget porttitor lorem</li>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>How to</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?linkid=852130">Working with Razor Pages.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699315">Manage User Secrets using Secret Manager.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699316">Use logging to log a message.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699317">Add packages using NuGet.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699319">Target development, staging or production environment.</a></li>
-        </ul>
+</div>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card-deck mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Step 1</h5>
+                    <h6 class="card-subtitle mb-2 ">Fill your personal Information</h6>
+                    <hr />
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                        <a class="btn text-light card-link disabled" asp-page="/Student">Click here</a>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body bg-success text-white">
+                    <h5 class="card-title">Step 2</h5>
+                    <h6 class="card-subtitle mb-2 ">Add Academic Records</h6>
+                    <hr />
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                        <a class="card-link text-light btn disabled" asp-page="/AcademicRecord">Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="col-md-3">
-        <h2>Overview</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=518008">Conceptual overview of what is ASP.NET Core</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=699320">Fundamentals of ASP.NET Core such as Startup and middleware.</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398602">Working with Data</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkId=398603">Security</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699321">Client side development</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699322">Develop on different platforms</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=699323">Read more on the documentation site</a></li>
-        </ul>
-    </div>
-    <div class="col-md-3">
-        <h2>Run &amp; Deploy</h2>
-        <ul>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517851">Run your app</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=517853">Run tools such as EF migrations and more</a></li>
-            <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure App Service</a></li>
-        </ul>
+</div>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <div class="card-deck mb-3">
+            <div class="card bg-success text-white">
+                <div class="card-body">
+                    <h5 class="card-title">Step 3</h5>
+                    <h6 class="card-subtitle mb-2 ">Upload Documents</h6>
+                    <hr />
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                        <a class="card-link text-light btn disabled" asp-page="/Student">Click here</a>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body border-primary-v3">
+                    <h5 class="card-title">Step 4</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Attend Interview</h6>
+                    <hr />
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                        <a class="card-link text-primary-v3" asp-page="/Student">Click here</a>
+                    </p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Step 5</h5>
+                    <h6 class="card-subtitle mb-2 text-muted">Confirm Fees Payment</h6>
+                    <hr />
+                    <p class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                        <a class="card-link text-primary-v3" asp-page="/Student">Click here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
