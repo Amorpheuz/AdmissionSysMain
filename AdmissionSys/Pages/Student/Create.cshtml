@@ -12,7 +12,7 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="Student.StudentID" class="control-label"></label>
@@ -100,14 +100,14 @@
                 <span asp-validation-for="Student.FamilyIncome" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Student.StudentSignature" class="control-label"></label>
-                <input asp-for="Student.StudentSignature" class="form-control" />
-                <span asp-validation-for="Student.StudentSignature" class="text-danger"></span>
+                <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
+                <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+                <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Student.StudentPhoto" class="control-label"></label>
-                <input asp-for="Student.StudentPhoto" class="form-control" />
-                <span asp-validation-for="Student.StudentPhoto" class="text-danger"></span>
+                <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
+                <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg"  class="form-control" />
+                <span asp-validation-for="Student.StudentPhotoActual" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Student.AadharNumber" class="control-label"></label>
@@ -143,6 +143,7 @@
 <div>
     <a asp-page="Index">Back to List</a>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

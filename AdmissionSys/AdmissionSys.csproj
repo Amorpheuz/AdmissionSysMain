@@ -30,4 +30,11 @@
     <Folder Include="wwwroot\lib\temp\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove=".DS_Store" />
+    <None Remove="PagesAcademicRecord\.DS_Store" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="wwwroot\.DS_Store" />
+  </ItemGroup>
 </Project>

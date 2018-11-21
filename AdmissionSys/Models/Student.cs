@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using AdmissionSys.Areas.Identity.Data;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Http;
 
 namespace AdmissionSys.Models
 {
@@ -193,12 +194,12 @@ namespace AdmissionSys.Models
 
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Your Signature(as per siganture upload guidelines mentioned)")]
-        [Required(ErrorMessage = "Please Upload Your Signature")]
+        //[Required(ErrorMessage = "Please Upload Your Signature")]
         public string StudentSignature { get; set; }
 
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Your Photo(as per photo upload guidelines mentioned)")]
-        [Required(ErrorMessage = "Please Upload Your Photo")]
+       // [Required(ErrorMessage = "Please Upload Your Photo")]
         public string StudentPhoto { get; set; }
 
         [Display(Name = "Addhar Number")]
@@ -215,6 +216,16 @@ namespace AdmissionSys.Models
         [Required(ErrorMessage = "PH Status is required")]
         [Display(Name = "PH Status")]
         public string PHStatus { get; set; } //make checkbox
+
+        [NotMapped]
+        [Display(Name = "Upload Your Photo(as per photo upload guidelines mentioned)")]
+        [Required(ErrorMessage = "Please Upload Your Photo")]
+        public IFormFile StudentPhotoActual { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Upload Your Signature(as per siganture upload guidelines mentioned)")]
+        [Required(ErrorMessage = "Please Upload Your Signature")]
+        public IFormFile StudentSignatureActual { get; set; }
 
         public string userID { get; set; }
 
