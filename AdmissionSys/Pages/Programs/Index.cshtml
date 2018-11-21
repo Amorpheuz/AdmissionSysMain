@@ -5,44 +5,50 @@
     ViewData["Title"] = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Programs[0].ProgramName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programs[0].IsIntakeOpen)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Programs[0].DocsRequired)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model.Programs) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProgramName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsIntakeOpen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DocsRequired)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ProgramsID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ProgramsID">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.ProgramsID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Index</h2>
+
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Programs[0].ProgramName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Programs[0].IsIntakeOpen)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Programs[0].DocsRequired)
+                </th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var item in Model.Programs) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsIntakeOpen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocsRequired)
+                    </td>
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ProgramsID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ProgramsID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ProgramsID">Delete</a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    </div>
+</div>
+
