@@ -208,18 +208,23 @@
                     <span asp-validation-for="Student.PHStatus" class="text-danger"></span>
                 </div>
             </div>
+            <hr/>
             <div class="form-row">
                 <div class="form-group col-md-6">
-                    <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
-                    <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+                    <div class="custom-file">
+                        <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="custom-file-input" />
+                        <label asp-for="Student.StudentSignatureActual" class="custom-file-label"></label>
+                    </div>
                     <small class="form-text text-muted">
                         Upload an image in <kdb>png</kdb>/<kdb>jpg</kdb> format of your Signature of max size 512kB
                     </small>
                     <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
-                    <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+                    <div class="custom-file">
+                        <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="custom-file-input" />
+                        <label asp-for="Student.StudentPhotoActual" class="custom-file-label"></label>
+                    </div>
                     <small class="form-text text-muted">
                         Upload a Passport image in <kdb>png</kdb>/<kdb>jpg</kdb> format of yourself of max size 512kB, Dimensions: 35 x
                         45 mm
