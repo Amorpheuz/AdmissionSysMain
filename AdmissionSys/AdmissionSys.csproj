@@ -26,4 +26,8 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\lib\temp\" />
+  </ItemGroup>
+
 </Project>
