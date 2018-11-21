@@ -5,72 +5,74 @@
     ViewData["Title"] = "Delete";
 }
 
-<h2>Delete</h2>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>AcademicRecord</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.ExamName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.ExamName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.BoardOrUni)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.BoardOrUni)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.SchoolOrCollegeName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.SchoolOrCollegeName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MeritNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MeritNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MonthYearOfPass)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MonthYearOfPass)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.RollNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.RollNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.LangOfInstruction)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.LangOfInstruction)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.ScoreValidity)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.ScoreValidity)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MarksObtained)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MarksObtained)
-        </dd>
-    </dl>
+        <h3>Are you sure you want to delete this?</h3>
+        <h4>AcademicRecord</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.ExamName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.ExamName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.BoardOrUni)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.BoardOrUni)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.SchoolOrCollegeName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.SchoolOrCollegeName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MeritNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MeritNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MonthYearOfPass)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MonthYearOfPass)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.RollNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.RollNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.LangOfInstruction)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.LangOfInstruction)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.ScoreValidity)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.ScoreValidity)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MarksObtained)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MarksObtained)
+            </dd>
+        </dl>
     
-    <form method="post">
-        <input type="hidden" asp-for="AcademicRecord.AcademicRecordID" />
-        <input type="submit" value="Delete" class="btn btn-primary-v3" /> |
-        <a asp-page="./Index">Back to List</a>
-    </form>
+        <form method="post">
+            <input type="hidden" asp-for="AcademicRecord.AcademicRecordID" />
+            <input type="submit" value="Delete" class="btn btn-primary-v3" /> |
+            <a asp-page="./Index">Back to List</a>
+        </form>
+    </div>
 </div>

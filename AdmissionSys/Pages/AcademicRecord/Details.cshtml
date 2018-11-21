@@ -5,69 +5,72 @@
     ViewData["Title"] = "Details";
 }
 
-<h2>Details</h2>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Details</h2>
 
-<div>
-    <h4>AcademicRecord</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.ExamName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.ExamName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.BoardOrUni)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.BoardOrUni)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.SchoolOrCollegeName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.SchoolOrCollegeName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MeritNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MeritNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MonthYearOfPass)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MonthYearOfPass)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.RollNumber)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.RollNumber)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.LangOfInstruction)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.LangOfInstruction)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.ScoreValidity)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.ScoreValidity)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.AcademicRecord.MarksObtained)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.AcademicRecord.MarksObtained)
-        </dd>
-    </dl>
+        <h4>AcademicRecord</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.ExamName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.ExamName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.BoardOrUni)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.BoardOrUni)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.SchoolOrCollegeName)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.SchoolOrCollegeName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MeritNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MeritNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MonthYearOfPass)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MonthYearOfPass)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.RollNumber)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.RollNumber)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.LangOfInstruction)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.LangOfInstruction)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.ScoreValidity)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.ScoreValidity)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.AcademicRecord.MarksObtained)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.AcademicRecord.MarksObtained)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-page="./Edit" asp-route-id="@Model.AcademicRecord.AcademicRecordID">Edit</a> |
+        <a asp-page="./Index">Back to List</a>
+    </div>
 </div>
-<div>
-    <a asp-page="./Edit" asp-route-id="@Model.AcademicRecord.AcademicRecordID">Edit</a> |
-    <a asp-page="./Index">Back to List</a>
-</div>
+
