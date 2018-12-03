@@ -3,6 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionSys.Models
 {
+   
     public class ApplicationList
     {
         public int ApplicationListID { get; set; }
@@ -14,6 +15,27 @@ namespace AdmissionSys.Models
         [Required]
         public string Status { get; set; }
         public string PrioAreaOfResearch { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool AttendInterview { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool ConfirmFeesPayment { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool CounsellingDone { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool AdmissionConfirmed { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool AcademicRecAdded { get; set; }
+
+        [ScaffoldColumn(false)]
+        public bool FormVerified { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
         public string ProgramsID { get; set; }
 

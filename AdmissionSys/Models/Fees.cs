@@ -16,6 +16,9 @@ namespace AdmissionSys.Models
         [Display(Name = "Fees Type")]
         public string FeesType { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public string ProgramsID { get; set; }
 
         public Programs Programs { get; set; }

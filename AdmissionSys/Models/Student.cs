@@ -17,7 +17,10 @@ namespace AdmissionSys.Models
     {
       General, SC, ST, OBC, Other
     }
-
+    public enum RelationWithGuardian
+    {
+       Mother, Father, Uncle , Aunt, Other
+    }
     public enum BloodGroup
     {
         [Display(Name = "A Positive")]
@@ -151,11 +154,11 @@ namespace AdmissionSys.Models
 
         [Required, StringLength(30, ErrorMessage = "Guardian Name can not be more than 30 characters long")]
         [Display(Name = "Guardian Name")]
-        public string StudentGuradianName { get; set; }
+        public string StudentGuardianName { get; set; }
 
         [Required(ErrorMessage = "Please Specify Your Relation with the Guardian")]
         [Display(Name = "What's your relation with guardian you specified")]
-        public string RelWithGuardian { get; set; } //make combobox
+        public RelationWithGuardian? RelWithGuardian { get; set; } //make combobox
 
         [Required(ErrorMessage = "Please Specify Your Blood Group")]
         [Display(Name = "Blood Group")]
@@ -211,11 +214,20 @@ namespace AdmissionSys.Models
 
         [Display(Name = "Occupation of Guardian")]
         [StringLength(20, ErrorMessage = "Just Specify Guardian Occupation, please don't describe it")]
-        public string GuradianOccupation { get; set; }
+        public string GuardianOccupation { get; set; }
 
         [Required(ErrorMessage = "PH Status is required")]
         [Display(Name = "PH Status")]
-        public string PHStatus { get; set; } //make checkbox
+        public bool PHStatus { get; set; } //make checkbox
+
+        [ScaffoldColumn(false)]
+        public bool FillPersonalInfo { get; set; }
+
+        [ScaffoldColumn(false)]
+        public string PersonalMessage { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
         [NotMapped]
         [Display(Name = "Upload Your Photo")]

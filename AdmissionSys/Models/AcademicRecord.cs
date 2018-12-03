@@ -48,6 +48,9 @@ namespace AdmissionSys.Models
         [Required(ErrorMessage = "Grade/Marks Obtained is required")]
         public string MarksObtained { get; set; }
 
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public Student Student { get; set; }
     }
 }

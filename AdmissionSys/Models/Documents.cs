@@ -70,6 +70,12 @@ namespace AdmissionSys.Models
         public string DocumentsID { get; set; }
         public string DocumentPath { get; set; }
 
+        [ScaffoldColumn(false)]
+        public bool DocumentUploaded { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
+
         public DocumentType? DocumentType { get; set; }
         public Student Student { get; set; }
     }
