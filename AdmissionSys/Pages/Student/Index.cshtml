@@ -40,7 +40,7 @@
                         @Html.DisplayNameFor(model => model.Student[0].StudentGuardianName)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Student[0].RelWithGuardian)
+                        @Html.DisplayNameFor(model => model.Student[0].RelationWithGuardian)
                     </th>
                     <th>
                         @Html.DisplayNameFor(model => model.Student[0].BloodGroup)
@@ -79,7 +79,7 @@
                         @Html.DisplayNameFor(model => model.Student[0].GuardianOccupation)
                     </th>
                     <th>
-                        @Html.DisplayNameFor(model => model.Student[0].PHStatus)
+                        @Html.DisplayNameFor(model => model.Student[0].PhysicallyHandicapStatus)
                     </th>
                     <th> Options</th>
                 </tr>
@@ -113,7 +113,7 @@
                             @Html.DisplayFor(modelItem => item.StudentGuardianName)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.RelWithGuardian)
+                            @Html.DisplayFor(modelItem => item.RelationWithGuardian)
                         </td>
                         <td>
                             @Html.DisplayFor(modelItem => item.BloodGroup)
@@ -152,7 +152,7 @@
                             @Html.DisplayFor(modelItem => item.GuardianOccupation)
                         </td>
                         <td>
-                            @Html.DisplayFor(modelItem => item.PHStatus)
+                            @Html.DisplayFor(modelItem => item.PhysicallyHandicapStatus)
                         </td>
                         <td>
                             <a asp-page="./Edit" asp-route-id="@item.StudentID">Edit</a> |

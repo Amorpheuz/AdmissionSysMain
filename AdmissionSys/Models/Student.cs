@@ -158,7 +158,7 @@ namespace AdmissionSys.Models
 
         [Required(ErrorMessage = "Please Specify Your Relation with the Guardian")]
         [Display(Name = "What's your relation with guardian you specified")]
-        public RelationWithGuardian? RelWithGuardian { get; set; } //make combobox
+        public RelationWithGuardian? RelationWithGuardian { get; set; } //make combobox
 
         [Required(ErrorMessage = "Please Specify Your Blood Group")]
         [Display(Name = "Blood Group")]
@@ -216,9 +216,9 @@ namespace AdmissionSys.Models
         [StringLength(20, ErrorMessage = "Just Specify Guardian Occupation, please don't describe it")]
         public string GuardianOccupation { get; set; }
 
-        [Required(ErrorMessage = "PH Status is required")]
-        [Display(Name = "PH Status")]
-        public bool PHStatus { get; set; } //make checkbox
+        [Required(ErrorMessage = "Physically Challenged Status is required")]
+        [Display(Name = "Are you Physically Challenged? Tick for yes.")]
+        public bool PhysicallyHandicapStatus { get; set; } //make checkbox
 
         [ScaffoldColumn(false)]
         public bool FillPersonalInfo { get; set; }
