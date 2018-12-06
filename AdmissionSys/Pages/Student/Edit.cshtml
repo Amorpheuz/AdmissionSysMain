@@ -200,26 +200,29 @@
         </div>
     </div>
     <div class="form-row">
-        <img src="@Model.Student.StudentPhoto" height="100px" width="100px"/>
-        <div class="form-group col-md-6">
-            <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
-            <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
-            <small class="form-text text-muted">
-                Upload an image in <kdb>png</kdb>/<kdb>jpg</kdb> format of your Signature of max size 512kB
-            </small>
-            <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
-        </div>
+        <img src="@Model.Student.StudentPhoto" height="100px" width="100px" /><br><br>
+
+        <!--div-- class="form-group col-md-6">
+        <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
+        <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+        <small class="form-text text-muted">
+            Upload an image in <kdb>png</kdb>/<kdb>jpg</kdb> format of your Signature of max size 512kB
+        </small>
+        <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
+    </!--div-->
         <img src="@Model.Student.StudentSignature" height="100px" width="100px" />
-        <div class="form-group col-md-6">
-            <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
-            <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
-            <small class="form-text text-muted">
-                Upload a Passport image in <kdb>png</kdb>/<kdb>jpg</kdb> format of yourself of max size 512kB, Dimensions: 35 x
-                45 mm
-            </small>
-            <span asp-validation-for="Student.StudentPhotoActual" class="text-danger"></span>
-        </div>
-        <input type="hidden" asp-for="Student.StudentPhoto" value="@Model.Student.StudentPhoto"/>
+        <!--input type="image" id="get_file2" src="~/images/edit.svg" width="20px" height="20px" alt="Change Picture">
+    <input type="file" id="my_file2" accept="image/x-png,image/jpeg" class="form-control" asp-for="Student.StudentSignature"  style="display: none;"-->
+        <!--div class="form-group col-md-6">
+        <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
+        <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
+        <small class="form-text text-muted">
+            Upload a Passport image in <kdb>png</kdb>/<kdb>jpg</kdb> format of yourself of max size 512kB, Dimensions: 35 x
+            45 mm
+        </small>
+        <span asp-validation-for="Student.StudentPhotoActual" class="text-danger"></span>
+    </!--div-->
+        <input type="hidden" asp-for="Student.StudentPhoto" value="@Model.Student.StudentPhoto" />
         <input type="hidden" asp-for="Student.StudentSignature" value="@Model.Student.StudentSignature" />
     </div>
     <div class="form-group">
@@ -234,6 +237,7 @@
     <a asp-page="./Index">Back to List</a>
     </div>
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

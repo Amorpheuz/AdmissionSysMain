@@ -53,8 +53,9 @@ namespace AdmissionSys.Pages.Student
 
         public async Task<IActionResult> OnPostAsync()
         {
-            await SavephotoAsync();
-            await SavesignAsync();
+            //await SavephotoAsync();
+            //await SavesignAsync();
+          
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -86,79 +87,79 @@ namespace AdmissionSys.Pages.Student
         }
 
 
-        private async Task<IActionResult> SavephotoAsync()
-        {
-            NuvAdUser user = await GetCurrentUserAsync();
-            string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
-            if (Student.StudentPhotoActual != null)
-            {
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                string filepathimg = Student.StudentPhoto;
-                string filepathsign = Student.StudentSignature;
+        //private async Task<IActionResult> SavephotoAsync()
+        //{
+        //    NuvAdUser user = await GetCurrentUserAsync();
+        //    string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
+        //    if (Student.StudentPhotoActual != null)
+        //    {
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
+        //        string filepathimg = Student.StudentPhoto;
+        //        string filepathsign = Student.StudentSignature;
 
-                if (System.IO.File.Exists(hostingEnvironment.WebRootPath+"/"+filepathimg))
-                {
-                    System.IO.File.Delete(hostingEnvironment.WebRootPath+""+filepathimg);
-                }
-                if (System.IO.File.Exists(hostingEnvironment.WebRootPath+"/"+filepathsign))
-                {
-                    System.IO.File.Delete(hostingEnvironment.WebRootPath + "/" + filepathsign);
-                }
-                var fileName = GetUniqueName(Student.StudentPhotoActual.FileName);
-                var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
-                var filePath = Path.Combine(uploads, fileName);
-                Student.StudentPhotoActual.CopyTo(new FileStream(filePath, FileMode.Create));
-                Student.StudentPhoto = "/uploads/" + Student.StudentID +"/"+ fileName; // Set the file name
-                return null;
-            }
-            else
-            {
-                return Page();
-            }
-        }
-        private async Task<IActionResult> SavesignAsync()
-        {
-            NuvAdUser user = await GetCurrentUserAsync();
-            string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
-            if (Student.StudentSignatureActual != null)
-            {
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                string filepathimg = Student.StudentPhoto;
-                string filepathsign = Student.StudentSignature;
+        //        if (System.IO.File.Exists(hostingEnvironment.WebRootPath+"/"+filepathimg))
+        //        {
+        //            System.IO.File.Delete(hostingEnvironment.WebRootPath+""+filepathimg);
+        //        }
+        //        if (System.IO.File.Exists(hostingEnvironment.WebRootPath+"/"+filepathsign))
+        //        {
+        //            System.IO.File.Delete(hostingEnvironment.WebRootPath + "/" + filepathsign);
+        //        }
+        //        var fileName = GetUniqueName(Student.StudentPhotoActual.FileName);
+        //        var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
+        //        var filePath = Path.Combine(uploads, fileName);
+        //        Student.StudentPhotoActual.CopyTo(new FileStream(filePath, FileMode.Create));
+        //        Student.StudentPhoto = "/uploads/" + Student.StudentID +"/"+ fileName; // Set the file name
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        return Page();
+        //    }
+        //}
+        //private async Task<IActionResult> SavesignAsync()
+        //{
+        //    NuvAdUser user = await GetCurrentUserAsync();
+        //    string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
+        //    if (Student.StudentSignatureActual != null)
+        //    {
+        //        if (!Directory.Exists(path))
+        //        {
+        //            Directory.CreateDirectory(path);
+        //        }
+        //        string filepathimg = Student.StudentPhoto;
+        //        string filepathsign = Student.StudentSignature;
 
-                if (System.IO.File.Exists(filepathimg))
-                {
-                    System.IO.File.Delete(filepathimg);
-                }
-                if (System.IO.File.Exists(filepathsign))
-                {
-                    System.IO.File.Delete(filepathsign);
-                }
-                var fileName = GetUniqueName(Student.StudentSignatureActual.FileName);
-                var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
-                var filePath = Path.Combine(uploads, fileName);
-                Student.StudentSignatureActual.CopyTo(new FileStream(filePath, FileMode.Create));
-                Student.StudentSignature = "/uploads/"+Student.StudentID+"/"+fileName; // Set the file name
-                return null;
-            }
-            else
-            {
-                return Page();
-            }
-        }
+        //        if (System.IO.File.Exists(filepathimg))
+        //        {
+        //            System.IO.File.Delete(filepathimg);
+        //        }
+        //        if (System.IO.File.Exists(filepathsign))
+        //        {
+        //            System.IO.File.Delete(filepathsign);
+        //        }
+        //        var fileName = GetUniqueName(Student.StudentSignatureActual.FileName);
+        //        var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
+        //        var filePath = Path.Combine(uploads, fileName);
+        //        Student.StudentSignatureActual.CopyTo(new FileStream(filePath, FileMode.Create));
+        //        Student.StudentSignature = "/uploads/"+Student.StudentID+"/"+fileName; // Set the file name
+        //        return null;
+        //    }
+        //    else
+        //    {
+        //        return Page();
+        //    }
+        //}
 
-        private string GetUniqueName(string fileName)
-        {
-            fileName = Path.GetFileName(fileName);
-            return Path.GetFileNameWithoutExtension(fileName)
-                   + "_" + Guid.NewGuid().ToString().Substring(0, 4)
-                   + Path.GetExtension(fileName);
-        }
+        //private string GetUniqueName(string fileName)
+        //{
+        //    fileName = Path.GetFileName(fileName);
+        //    return Path.GetFileNameWithoutExtension(fileName)
+        //           + "_" + Guid.NewGuid().ToString().Substring(0, 4)
+        //           + Path.GetExtension(fileName);
+        //}
     }
 }

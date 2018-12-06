@@ -213,9 +213,13 @@
                     <div class="custom-file">
                         <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="custom-file-input" />
                         <label asp-for="Student.StudentSignatureActual" class="custom-file-label"></label>
+                        <input type="hidden" asp-for="Student.StudentSignature" value="Lol" />
                     </div>
                     <small class="form-text text-muted">
                         Upload an image in <kdb>png</kdb>/<kdb>jpg</kdb> format of your Signature of max size 512kB
+                        <div class="text-primary-v3">
+                            Note: It can not be changed later. Make sure you get a good snap.
+                        </div>
                     </small>
                     <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
                 </div>
@@ -223,10 +227,14 @@
                     <div class="custom-file">
                         <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="custom-file-input" />
                         <label asp-for="Student.StudentPhotoActual" class="custom-file-label"></label>
+                        <input type="hidden" asp-for="Student.StudentPhoto" value="Lol" />
                     </div>
                     <small class="form-text text-muted">
                         Upload a Passport image in <kdb>png</kdb>/<kdb>jpg</kdb> format of yourself of max size 512kB, Dimensions: 35 x
-                        45 mm
+                        45 mm. 
+                        <div class="text-primary-v3">
+                          Note: It can not be changed later. Make sure you get a good snap.
+                        </div>
                     </small>
                     <span asp-validation-for="Student.StudentPhotoActual" class="text-danger"></span>
                 </div>

@@ -43,6 +43,8 @@ namespace AdmissionSys.Pages.Student
         public async Task<IActionResult> OnPostAsync()
         {
             //Student.StudentSignature = "wwrc";
+            Student.StudentPhoto = "placeholder";
+            Student.StudentSignature = "placeholder";
             Savephoto();
             await SavesignAsync();
             if (!ModelState.IsValid)
