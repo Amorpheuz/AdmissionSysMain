@@ -200,7 +200,7 @@
         </div>
     </div>
     <div class="form-row">
-        <img src="@Model.Student.StudentPhoto" />
+        <img src="@Model.Student.StudentPhoto" height="100px" width="100px"/>
         <div class="form-group col-md-6">
             <label asp-for="Student.StudentSignatureActual" class="control-label"></label>
             <input asp-for="Student.StudentSignatureActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />
@@ -209,6 +209,7 @@
             </small>
             <span asp-validation-for="Student.StudentSignatureActual" class="text-danger"></span>
         </div>
+        <img src="@Model.Student.StudentSignature" height="100px" width="100px" />
         <div class="form-group col-md-6">
             <label asp-for="Student.StudentPhotoActual" class="control-label"></label>
             <input asp-for="Student.StudentPhotoActual" type="file" accept="image/x-png,image/jpeg" class="form-control" />

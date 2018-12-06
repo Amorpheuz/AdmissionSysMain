@@ -109,16 +109,16 @@
                 @Html.DisplayFor(model => model.Student.FamilyIncome)
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Student.StudentSignature)
+                Signature Preview
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Student.StudentSignature)
+                <img src="@Html.DisplayFor(model => model.Student.StudentSignature)" height="200px" width="200px" />
             </dd>
             <dt>
-                @Html.DisplayNameFor(model => model.Student.StudentPhoto)
+                Photo Preview
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.Student.StudentPhoto)
+                <img src="@Html.DisplayFor(model => model.Student.StudentPhoto)" height="200px" width="200px" />
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.Student.AadharNumber)
