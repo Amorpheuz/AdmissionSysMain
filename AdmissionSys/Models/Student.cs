@@ -197,12 +197,12 @@ namespace AdmissionSys.Models
 
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Your Signature")]
-        [Required(ErrorMessage = "Please Upload Your Signature")]
+       // [Required(ErrorMessage = "Please Upload Your Signature")]
         public string StudentSignature { get; set; }
 
         [DataType(DataType.Upload)]
         [Display(Name = "Upload Your Photo")]
-        [Required(ErrorMessage = "Please Upload Your Photo")]
+        //[Required(ErrorMessage = "Please Upload Your Photo")]
         public string StudentPhoto { get; set; }
 
         [Display(Name = "Aadhaar Number")]

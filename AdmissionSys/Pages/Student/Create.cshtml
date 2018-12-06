@@ -164,7 +164,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label asp-for="Student.RelationWithGuardian" class="control-label"></label>
-                    <input asp-for="Student.RelationWithGuardian" class="form-control" />
+                    <select asp-for="Student.RelationWithGuardian" class="form-control" asp-items="Html.GetEnumSelectList(typeof(RelationWithGuardian))"></select>
                     <small class="form-text text-muted">
                         Enter how you relate to your Guardian
                     </small>
@@ -180,7 +180,6 @@
                     </small>
                     <span asp-validation-for="Student.GuardianMobileNumber" class="text-danger"></span>
                 </div>
-
                 <div class="form-group col-md-6">
                     <label asp-for="Student.FamilyIncome" class="control-label"></label>
                     <input asp-for="Student.FamilyIncome" class="form-control" />
@@ -208,7 +207,7 @@
                     <span asp-validation-for="Student.PhysicallyHandicapStatus" class="text-danger"></span>
                 </div>
             </div>
-            <hr/>
+            <hr />
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <div class="custom-file">
@@ -240,6 +239,7 @@
                 <input type="submit" value="Create" class="btn btn-primary-v3" />
             </div>
         </form>
+        @Html.ValidationSummary()
         <a asp-page="Index">Back to List</a>
     </div>
 </div>

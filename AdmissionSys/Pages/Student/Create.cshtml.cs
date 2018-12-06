@@ -43,8 +43,8 @@ namespace AdmissionSys.Pages.Student
         public async Task<IActionResult> OnPostAsync()
         {
             //Student.StudentSignature = "wwrc";
-            await savephotoAsync();
-            await savesignAsync();
+            Savephoto();
+            await SavesignAsync();
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -54,10 +54,9 @@ namespace AdmissionSys.Pages.Student
             await _context.SaveChangesAsync();
             return RedirectToPage("./Index");
         }
-        private async Task<IActionResult> savephotoAsync()
+        private IActionResult Savephoto()
         {
-            NuvAdUser user = await GetCurrentUserAsync();
-            string path = hostingEnvironment.WebRootPath + "//uploads//" + user?.Id;
+            string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
             if (Student.StudentPhotoActual != null)
             {
                 if (!Directory.Exists(path))
@@ -68,7 +67,7 @@ namespace AdmissionSys.Pages.Student
                 var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
                 var filePath = Path.Combine(uploads, fileName);
                 Student.StudentPhotoActual.CopyTo(new FileStream(filePath, FileMode.Create));
-                Student.StudentPhoto = filePath; // Set the file name
+                Student.StudentPhoto = "/uploads/" + Student.StudentID + "/" + fileName; ; // Set the file name
                 return null;
             }
             else
@@ -76,10 +75,10 @@ namespace AdmissionSys.Pages.Student
                 return Page();
             }
         }
-        private async Task<IActionResult> savesignAsync()
+        private async Task<IActionResult> SavesignAsync()
         {
             NuvAdUser user = await GetCurrentUserAsync();
-            string path = hostingEnvironment.WebRootPath + "//uploads//" + user?.Id;
+            string path = hostingEnvironment.WebRootPath + "/uploads/" + Student.StudentID;
             if (Student.StudentSignatureActual != null)
             {
                 if (!Directory.Exists(path))
@@ -90,7 +89,7 @@ namespace AdmissionSys.Pages.Student
                 var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
                 var filePath = Path.Combine(uploads, fileName);
                 Student.StudentSignatureActual.CopyTo(new FileStream(filePath, FileMode.Create));
-                Student.StudentSignature = filePath; // Set the file name
+                Student.StudentSignature = "/uploads/" + Student.StudentID + "/" + fileName; ;// Set the file name
                 return null;
             }
             else
