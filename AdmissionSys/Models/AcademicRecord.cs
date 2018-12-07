@@ -45,13 +45,13 @@ namespace AdmissionSys.Models
         public DateTime ScoreValidity { get; set; }
 
         [Display(Name = "Grade/Marks Obtained")]
-        [Required(ErrorMessage = "Grade/Marks Obtained is required")]
+       // [Required(ErrorMessage = "Grade/Marks Obtained is required")]
         public string MarksObtained { get; set; }
 
-        [Required(ErrorMessage = "Marks Obtained Out of/CGPA is required")]
+       // [Required(ErrorMessage = "Marks Obtained Out of/CGPA is required")]
         public string ObtainedOutOfOrCGPA { get; set; }
 
-        public double CalcPercentage { get; set; }
+        public string CalcPer { get; set; }
 
         public string MarksOrGrade { get; set; } //for specifying what is entered , marks or grade
 
