@@ -1,5 +1,5 @@
 ﻿@page
-@model sscModel
+@model hscModel
 @{
     ViewData["Title"] = "Create";
 }
@@ -13,7 +13,7 @@
         <form method="post" id="ssc">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" value="SSC/Std 10th" asp-for="AcademicRecord.ExamName" />
+            <input type="hidden" value="HSC/Std 12th" asp-for="AcademicRecord.ExamName" />
 
             <div class="form-group">
                 <label asp-for="AcademicRecord.BoardOrUni" class="control-label"></label>
@@ -115,11 +115,19 @@
             </div>
 
             <div class="form-group">
+                <label asp-for="AcademicRecord.ACPCMeritNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.ACPCMeritNumber" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the ACPC/ACPDC merit number if you are a science student and applying through the ACPC process. Otherwise your application can be cancelled.
+                </small>
+                <span asp-validation-for="AcademicRecord.ACPCMeritNumber" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary-v3" />
             </div>
         </form>
-        <script>
-                 function grademarkscheck() {
+        <script>function grademarkscheck() {
                     if (document.getElementById('Marks').checked) {
                    document.getElementById('marks').style.display = 'block';
                    document.getElementById('grade').style.display = 'none';
@@ -139,11 +147,8 @@
                     document.getElementById("gradeform").required = true;
                     document.getElementById("cgpaform").required = true;
                     }
-                       }
-
-        </script>
-        <script>
-            function percentagecalc()
+                       }</script>
+        <script>function percentagecalc()
             {
             var marks = document.forms["ssc"]["marksobtainedid"].value;
             var outof = document.forms["ssc"]["outofid"].value;
@@ -157,5 +162,4 @@
                 {
                 document.getElementById("percnt").value = "";
                 }
-            }
-        </script>
+            }</script>

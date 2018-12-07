@@ -67,9 +67,10 @@ namespace AdmissionSys.Models
         [StringLength(40, ErrorMessage = "Specialization / Main Subject can not be more than 40 characters")]
         public string SpecializationOrMainSubject { get; set; }
 
-
         [Timestamp]
         public byte[] RowVersion { get; set; }
+
+        public int StudentID { get; set; }
 
         public Student Student { get; set; }
     }

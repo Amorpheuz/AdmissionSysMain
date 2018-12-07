@@ -26,6 +26,18 @@ namespace AdmissionSys.Pages.AcademicRecord
             {
                 return RedirectToPage("./Exams/ssc");
             }
+            if (ex == "hsc")
+            {
+                return RedirectToPage("./Exams/hsc");
+            }
+            if (ex == "certi")
+            {
+                return RedirectToPage("./Exams/certi");
+            }
+            if (ex == "diploma")
+            {
+                return RedirectToPage("./Exams/diploma");
+            }
             return Page();
         }
 
