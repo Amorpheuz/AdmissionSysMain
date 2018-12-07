@@ -38,6 +38,10 @@ namespace AdmissionSys.Pages.AcademicRecord
             {
                 return RedirectToPage("./Exams/diploma");
             }
+            if (ex == "graduate")
+            {
+                return RedirectToPage("./Exams/graduate");
+            }
             return Page();
         }
 
