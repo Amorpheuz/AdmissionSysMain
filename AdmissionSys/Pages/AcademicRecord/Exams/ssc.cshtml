@@ -1,0 +1,91 @@
+﻿@page
+@model sscModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Create</h2>
+
+        <h4>AcademicRecord</h4>
+        <hr />
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" value="SSC/Std 10th" asp-for="AcademicRecord.ExamName" />
+
+            <div class="form-group">
+                <label asp-for="AcademicRecord.BoardOrUni" class="control-label"></label>
+                <input asp-for="AcademicRecord.BoardOrUni" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the Board of Examination
+                </small>
+                <span asp-validation-for="AcademicRecord.BoardOrUni" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AcademicRecord.SchoolOrCollegeName" class="control-label"></label>
+                <input asp-for="AcademicRecord.SchoolOrCollegeName" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter name of School/College which you were studying at previously
+                </small>
+                <span asp-validation-for="AcademicRecord.SchoolOrCollegeName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AcademicRecord.MonthYearOfPass" class="control-label"></label>
+                <input asp-for="AcademicRecord.MonthYearOfPass" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter Year of Passing out of the previous institution
+                </small>
+                <span asp-validation-for="AcademicRecord.MonthYearOfPass" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicRecord.RollNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.RollNumber" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter Roll Number/ID Number assigned to you in the exam
+                </small>
+                <span asp-validation-for="AcademicRecord.RollNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicRecord.LangOfInstruction" class="control-label"></label>
+                <input asp-for="AcademicRecord.LangOfInstruction" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the language you received instruction/education in at the previous institution
+                </small>
+                <span asp-validation-for="AcademicRecord.LangOfInstruction" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicRecord.MeritNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.MeritNumber" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter merit number/position achieved in the exam, Enter 0 if unknown
+                </small>
+                <span asp-validation-for="AcademicRecord.MeritNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="AcademicRecord.ScoreValidity" class="control-label"></label>
+                <input asp-for="AcademicRecord.ScoreValidity" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the date till your score is valid, Enter nothing if not applicable to the exam
+                </small>
+                <span asp-validation-for="AcademicRecord.ScoreValidity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Marks", false)@Html.Label("Marks")
+                @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Grade", false)@Html.Label("Grade")
+
+                
+                <label asp-for="AcademicRecord.MarksObtained" class="control-label"></label>
+                <input asp-for="AcademicRecord.MarksObtained" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the Grade / Percentage obtained
+                </small>
+                <span asp-validation-for="AcademicRecord.MarksObtained" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary-v3" />
+            </div>
+        </form>

@@ -20,8 +20,12 @@ namespace AdmissionSys.Pages.AcademicRecord
             _context = context;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(string ex)
         {
+            if(ex=="ssc")
+            {
+                return RedirectToPage("./Exams/ssc");
+            }
             return Page();
         }
 

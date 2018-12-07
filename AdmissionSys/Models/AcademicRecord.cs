@@ -55,6 +55,19 @@ namespace AdmissionSys.Models
 
         public string MarksOrGrade { get; set; } //for specifying what is entered , marks or grade
 
+        [Display(Name = "ACPC/ACPDC Merit Number")]
+        [StringLength(15, ErrorMessage = "ACPC Merit Number can not be more than 15 characters")]
+        public string ACPCMeritNumber { get; set; }
+
+        [Display(Name = "Name of Degree")]
+        [StringLength(70, ErrorMessage = "Name of Degree can not be more than 70 characters")]
+        public string NameOfDegree { get; set; }
+
+        [Display(Name = "Specialization / Main Subject")]
+        [StringLength(40, ErrorMessage = "Specialization / Main Subject can not be more than 40 characters")]
+        public string SpecializationOrMainSubject { get; set; }
+
+
         [Timestamp]
         public byte[] RowVersion { get; set; }
 
