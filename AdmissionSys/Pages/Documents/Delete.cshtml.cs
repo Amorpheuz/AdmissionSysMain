@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AdmissionSys.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace AdmissionSys.Pages.Documents
 {
@@ -14,10 +15,12 @@ namespace AdmissionSys.Pages.Documents
     public class DeleteModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
+        private readonly IHostingEnvironment hostingEnvironment;
 
-        public DeleteModel(AdmissionSys.Models.AdmissionSysContext context)
+        public DeleteModel(AdmissionSys.Models.AdmissionSysContext context, IHostingEnvironment environment)
         {
             _context = context;
+            this.hostingEnvironment = environment;
         }
 
         [BindProperty]
@@ -48,6 +51,10 @@ namespace AdmissionSys.Pages.Documents
 
             Documents = await _context.Documents.FindAsync(id);
 
+            if(System.IO.File.Exists(hostingEnvironment.WebRootPath+Documents.DocumentPath+""))
+            {
+                System.IO.File.Delete(hostingEnvironment.WebRootPath + Documents.DocumentPath + "");
+            }
             if (Documents != null)
             {
                 _context.Documents.Remove(Documents);

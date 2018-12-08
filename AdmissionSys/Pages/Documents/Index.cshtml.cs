@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using AdmissionSys.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using AdmissionSys.Areas.Identity.Data;
 
 namespace AdmissionSys.Pages.Documents
 {
@@ -14,9 +16,12 @@ namespace AdmissionSys.Pages.Documents
     public class IndexModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
+        private readonly UserManager<NuvAdUser> _userManager;
+        private Task<NuvAdUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public IndexModel(AdmissionSys.Models.AdmissionSysContext context)
+        public IndexModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
         {
+            _userManager = userManager;
             _context = context;
         }
 
@@ -24,7 +29,13 @@ namespace AdmissionSys.Pages.Documents
 
         public async Task OnGetAsync()
         {
-            Documents = await _context.Documents.ToListAsync();
+            NuvAdUser user = await GetCurrentUserAsync();
+            var sturecord = from s in _context.Student select s;
+            sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
+
+            var DocumentsIQ = from a in _context.Documents select a;
+
+            Documents = DocumentsIQ.Where(b => b.StudentID == sturecord.FirstOrDefault().StudentID).ToList();
         }
     }
 }
