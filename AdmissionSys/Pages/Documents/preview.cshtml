@@ -1,0 +1,26 @@
+﻿@page
+@model previewModel
+@{
+}
+
+@if (Model.filetype == ".pdf")
+{
+<embed src="@Model.ImagePreview" width="800px" height="1000px" />
+}
+@if(Model.filetype==".jpg" || Model.filetype==".jpeg" || Model.filetype==".png")
+{
+<img src="@Model.ImagePreview" width="800px" height="800px" />
+}
+<form method="post">
+
+   <input type="hidden" value="done" name="status" />
+    <input type="hidden" value="@Model.ImagePreview" name="path" />
+    <input type="hidden" value="@Model.doctype1" asp-for="Documents.DocumentType" />
+    <input type="submit" value="Save" class="btn btn-primary-v3" />
+
+</form>&nbsp; &nbsp;
+<form method="post">
+    <input type="hidden" value="delete" name="status" />
+    <input type="hidden" value="@Model.ImagePreview" name="path" />
+    <input type="submit" value="Cancel" class="btn btn-danger-v3" />
+</form>

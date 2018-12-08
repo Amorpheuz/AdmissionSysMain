@@ -1,5 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Http;
 
 namespace AdmissionSys.Models
 {
@@ -77,6 +79,14 @@ namespace AdmissionSys.Models
         public byte[] RowVersion { get; set; }
 
         public DocumentType? DocumentType { get; set; }
+
+        [NotMapped]
+        [Display(Name = "Upload Your Signature")]
+        //[Required(ErrorMessage = "Please Upload Your Signature")]
+        public IFormFile DocActual { get; set; }
+
+        public int StudentID { get; set; }
+
         public Student Student { get; set; }
     }
 }
