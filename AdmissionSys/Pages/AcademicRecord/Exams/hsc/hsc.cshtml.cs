@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionSys.Pages.AcademicRecord.Exams
+namespace AdmissionSys.Pages.AcademicRecord.Exams.hsc
 {
     [Authorize(Roles = "Applicant,Admin")]
     public class hscModel : PageModel
@@ -35,7 +35,7 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
 
             if (academicRecordsIQ.Count() >= 1)
             {
-                return RedirectToPage("../Index");
+                return RedirectToPage("../../Index");
             }
             else
             {
@@ -68,7 +68,7 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             _context.AcademicRecord.Add(AcademicRecord);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("../Index");
+            return RedirectToPage("../../Index");
         }
     }
 }

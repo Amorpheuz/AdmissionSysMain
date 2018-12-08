@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdmissionSys.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionSys.Pages.AcademicRecord.Exams
+namespace AdmissionSys.Pages.AcademicRecord.Exams.ssc
 {
-    public class diplomaModel : PageModel
+    [Authorize(Roles = "Applicant,Admin")]
+    public class sscModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
         private readonly UserManager<NuvAdUser> _userManager;
         private Task<NuvAdUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public diplomaModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
+        public sscModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -27,18 +29,18 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             var sturecord = from s in _context.Student select s;
             sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
             //IQueryable<AcademicRecord> academicRecordsIQ = (System.Linq.IQueryable<AdmissionSys.Pages.AcademicRecord>)(from s in _context.AcademicRecord select s);
-            var academicRecordsIQ = from a in _context.AcademicRecord select a;
-            academicRecordsIQ = academicRecordsIQ.Where(a => a.ExamName.Contains("Diploma") && a.StudentID == sturecord.FirstOrDefault().StudentID);
+            var academicRecordsIQ = from a in _context.AcademicRecord select a ;
+            academicRecordsIQ = academicRecordsIQ.Where(a => a.ExamName.Contains("SSC/Std 10th") && a.StudentID == sturecord.FirstOrDefault().StudentID);
 
             if (academicRecordsIQ.Count() >= 1)
             {
-                return RedirectToPage("../Index");
+              return RedirectToPage("../../Index");
             }
             else
             {
                 return Page();
             }
-
+            
         }
 
         [BindProperty]
@@ -51,10 +53,10 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
             AcademicRecord.StudentID = sturecord.FirstOrDefault().StudentID;
 
-            AcademicRecord.MarksObtained = Request.Form["marksobtained"].ToString().Replace(",", "");
+            AcademicRecord.MarksObtained=Request.Form["marksobtained"].ToString().Replace(",", "");
             AcademicRecord.ObtainedOutOfOrCGPA = Request.Form["outofobtained"].ToString().Replace(",", "");
-            AcademicRecord.CalcPer = Request.Form["CalcPer"].ToString().Replace(",", "");
-            AcademicRecord.CalcPer = AcademicRecord.CalcPer.Replace("%", "");
+            AcademicRecord.CalcPer = Request.Form["CalcPer"].ToString().Replace(",","");
+            AcademicRecord.CalcPer = AcademicRecord.CalcPer.Replace("%","");
 
             if (!ModelState.IsValid)
             {
@@ -64,7 +66,7 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             _context.AcademicRecord.Add(AcademicRecord);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("../Index");
+            return RedirectToPage("../../Index");
         }
     }
 }

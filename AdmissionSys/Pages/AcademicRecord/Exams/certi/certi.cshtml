@@ -1,9 +1,8 @@
 ﻿@page
-@model hscModel
+@model certi.certiModel
 @{
     ViewData["Title"] = "Create";
 }
-
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <h2>Create</h2>
@@ -13,13 +12,13 @@
         <form method="post" id="ssc">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" value="HSC/Std 12th" asp-for="AcademicRecord.ExamName" />
+            <input type="hidden" value="Certificate" asp-for="AcademicRecord.ExamName" />
 
             <div class="form-group">
-                <label asp-for="AcademicRecord.BoardOrUni" class="control-label"></label>
+                <label class="control-label">Board/ University/ Other Exam/ Certifying body</label>
                 <input asp-for="AcademicRecord.BoardOrUni" class="form-control" />
                 <small class="form-text text-muted">
-                    Enter the Board of Examination
+                    Board/ University/ Other Exam/ Certifying body of Certification
                 </small>
                 <span asp-validation-for="AcademicRecord.BoardOrUni" class="text-danger"></span>
             </div>
@@ -31,6 +30,15 @@
                     Enter name of School/College which you were studying at previously
                 </small>
                 <span asp-validation-for="AcademicRecord.SchoolOrCollegeName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label"> Certification: </label>
+                <input asp-for="AcademicRecord.NameOfDegree" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter the name of certification.
+                </small>
+                <span asp-validation-for="AcademicRecord.NameOfDegree" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -57,14 +65,7 @@
                 </small>
                 <span asp-validation-for="AcademicRecord.LangOfInstruction" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="AcademicRecord.MeritNumber" class="control-label"></label>
-                <input asp-for="AcademicRecord.MeritNumber" class="form-control" />
-                <small class="form-text text-muted">
-                    Enter merit number/position achieved in the exam, Enter 0 if unknown
-                </small>
-                <span asp-validation-for="AcademicRecord.MeritNumber" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Marks", new { @id = "Marks", @onclick = "grademarkscheck()" })@Html.Label("Marks")
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Grade", new { @id = "Grade", @onclick = "grademarkscheck()" })@Html.Label("Grade")
@@ -115,19 +116,11 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="AcademicRecord.ACPCMeritNumber" class="control-label"></label>
-                <input asp-for="AcademicRecord.ACPCMeritNumber" class="form-control" />
-                <small class="form-text text-muted">
-                    Enter the ACPC/ACPDC merit number if you are a science student and applying through the ACPC process. Otherwise your application can be cancelled.
-                </small>
-                <span asp-validation-for="AcademicRecord.ACPCMeritNumber" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary-v3" />
             </div>
         </form>
-        <script>function grademarkscheck() {
+        <script>
+function grademarkscheck() {
                     if (document.getElementById('Marks').checked) {
                    document.getElementById('marks').style.display = 'block';
                    document.getElementById('grade').style.display = 'none';
@@ -147,8 +140,10 @@
                     document.getElementById("gradeform").required = true;
                     document.getElementById("cgpaform").required = true;
                     }
-                       }</script>
-        <script>function percentagecalc()
+                       }
+        </script>
+        <script>
+function percentagecalc()
             {
             var marks = document.forms["ssc"]["marksobtainedid"].value;
             var outof = document.forms["ssc"]["outofid"].value;
@@ -162,4 +157,5 @@
                 {
                 document.getElementById("percnt").value = "";
                 }
-            }</script>
+            }
+        </script>

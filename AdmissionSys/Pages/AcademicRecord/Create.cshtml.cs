@@ -24,23 +24,23 @@ namespace AdmissionSys.Pages.AcademicRecord
         {
             if(ex=="ssc")
             {
-                return RedirectToPage("./Exams/ssc");
+                return RedirectToPage("./Exams/ssc/ssc");
             }
             if (ex == "hsc")
             {
-                return RedirectToPage("./Exams/hsc");
+                return RedirectToPage("./Exams/hsc/hsc");
             }
             if (ex == "certi")
             {
-                return RedirectToPage("./Exams/certi");
+                return RedirectToPage("./Exams/certi/certi");
             }
             if (ex == "diploma")
             {
-                return RedirectToPage("./Exams/diploma");
+                return RedirectToPage("./Exams/diploma/diploma");
             }
             if (ex == "graduate")
             {
-                return RedirectToPage("./Exams/graduate");
+                return RedirectToPage("./Exams/graduate/graduate");
             }
             return Page();
         }
@@ -48,6 +48,7 @@ namespace AdmissionSys.Pages.AcademicRecord
         [BindProperty]
         public Models.AcademicRecord AcademicRecord { get; set; }
 
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)

@@ -1,8 +1,9 @@
 ﻿@page
-@model certiModel
+@model ssc.sscModel
 @{
     ViewData["Title"] = "Create";
 }
+
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <h2>Create</h2>
@@ -12,13 +13,13 @@
         <form method="post" id="ssc">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
-            <input type="hidden" value="Certificate" asp-for="AcademicRecord.ExamName" />
+            <input type="hidden" value="SSC/Std 10th" asp-for="AcademicRecord.ExamName" />
 
             <div class="form-group">
-                <label class="control-label">Board/ University/ Other Exam/ Certifying body</label>
+                <label asp-for="AcademicRecord.BoardOrUni" class="control-label"></label>
                 <input asp-for="AcademicRecord.BoardOrUni" class="form-control" />
                 <small class="form-text text-muted">
-                    Board/ University/ Other Exam/ Certifying body of Certification
+                    Enter the Board of Examination
                 </small>
                 <span asp-validation-for="AcademicRecord.BoardOrUni" class="text-danger"></span>
             </div>
@@ -30,15 +31,6 @@
                     Enter name of School/College which you were studying at previously
                 </small>
                 <span asp-validation-for="AcademicRecord.SchoolOrCollegeName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label"> Certification: </label>
-                <input asp-for="AcademicRecord.NameOfDegree" class="form-control" />
-                <small class="form-text text-muted">
-                    Enter the name of certification.
-                </small>
-                <span asp-validation-for="AcademicRecord.NameOfDegree" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -65,7 +57,14 @@
                 </small>
                 <span asp-validation-for="AcademicRecord.LangOfInstruction" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="AcademicRecord.MeritNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.MeritNumber" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter merit number/position achieved in the exam, Enter 0 if unknown
+                </small>
+                <span asp-validation-for="AcademicRecord.MeritNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Marks", new { @id = "Marks", @onclick = "grademarkscheck()" })@Html.Label("Marks")
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Grade", new { @id = "Grade", @onclick = "grademarkscheck()" })@Html.Label("Grade")
@@ -120,7 +119,7 @@
             </div>
         </form>
         <script>
-function grademarkscheck() {
+                 function grademarkscheck() {
                     if (document.getElementById('Marks').checked) {
                    document.getElementById('marks').style.display = 'block';
                    document.getElementById('grade').style.display = 'none';
@@ -141,9 +140,10 @@ function grademarkscheck() {
                     document.getElementById("cgpaform").required = true;
                     }
                        }
+
         </script>
         <script>
-function percentagecalc()
+            function percentagecalc()
             {
             var marks = document.forms["ssc"]["marksobtainedid"].value;
             var outof = document.forms["ssc"]["outofid"].value;

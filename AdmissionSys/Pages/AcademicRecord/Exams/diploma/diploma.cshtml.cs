@@ -7,15 +7,15 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace AdmissionSys.Pages.AcademicRecord.Exams
+namespace AdmissionSys.Pages.AcademicRecord.Exams.diploma
 {
-    public class certiModel : PageModel
+    public class diplomaModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
         private readonly UserManager<NuvAdUser> _userManager;
         private Task<NuvAdUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public certiModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
+        public diplomaModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
         {
             _userManager = userManager;
             _context = context;
@@ -28,11 +28,11 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
             //IQueryable<AcademicRecord> academicRecordsIQ = (System.Linq.IQueryable<AdmissionSys.Pages.AcademicRecord>)(from s in _context.AcademicRecord select s);
             var academicRecordsIQ = from a in _context.AcademicRecord select a;
-            academicRecordsIQ = academicRecordsIQ.Where(a => a.ExamName.Contains("Certificate") && a.StudentID == sturecord.FirstOrDefault().StudentID);
+            academicRecordsIQ = academicRecordsIQ.Where(a => a.ExamName.Contains("Diploma") && a.StudentID == sturecord.FirstOrDefault().StudentID);
 
             if (academicRecordsIQ.Count() >= 1)
             {
-                return RedirectToPage("../Index");
+                return RedirectToPage("../../Index");
             }
             else
             {
@@ -64,7 +64,7 @@ namespace AdmissionSys.Pages.AcademicRecord.Exams
             _context.AcademicRecord.Add(AcademicRecord);
             await _context.SaveChangesAsync();
 
-            return RedirectToPage("../Index");
+            return RedirectToPage("../../Index");
         }
     }
 }

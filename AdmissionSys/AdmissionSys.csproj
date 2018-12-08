@@ -26,6 +26,11 @@
     <Folder Include="Models\" />
     <Folder Include="wwwroot\uploads\ceab43e9-ca93-4605-b1c0-d6d47196d747\" />
     <Folder Include="Pages\AcademicRecord\Exams\" />
+    <Folder Include="Pages\AcademicRecord\Exams\ssc\" />
+    <Folder Include="Pages\AcademicRecord\Exams\hsc\" />
+    <Folder Include="Pages\AcademicRecord\Exams\certi\" />
+    <Folder Include="Pages\AcademicRecord\Exams\diploma\" />
+    <Folder Include="Pages\AcademicRecord\Exams\graduate\" />
   </ItemGroup>
 
   <ItemGroup>
