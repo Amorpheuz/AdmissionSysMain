@@ -14,7 +14,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ApplicationList[0].ApplicationCategory)
+                @Html.DisplayNameFor(model => model.ApplicationList[0].ApplicationCat)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApplicationList[0].Status)
@@ -32,7 +32,7 @@
 @foreach (var item in Model.ApplicationList) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ApplicationCategory)
+                @Html.DisplayFor(modelItem => item.ApplicationCat)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)

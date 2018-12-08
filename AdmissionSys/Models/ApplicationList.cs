@@ -3,17 +3,26 @@ using System.ComponentModel.DataAnnotations;
 
 namespace AdmissionSys.Models
 {
-   
+public enum ApplicationCat
+    {
+        General,
+        SC,
+        ST,
+        OBC,
+        Management,
+        Foreigner,
+        SportsQuota
+    }
     public class ApplicationList
     {
         public int ApplicationListID { get; set; }
 
         [Display(Name = "Application Category")]
         [Required(ErrorMessage = "Please Specify a category to apply from")]
-        public string ApplicationCategory { get; set; }
+        public ApplicationCat? ApplicationCat { get; set; }
 
-        [Required]
         public string Status { get; set; }
+
         public string PrioAreaOfResearch { get; set; }
 
         [ScaffoldColumn(false)]

@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using AdmissionSys.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
+using AdmissionSys.Areas.Identity.Data;
 
 namespace AdmissionSys.Pages.ApplicationList
 {
@@ -14,15 +16,18 @@ namespace AdmissionSys.Pages.ApplicationList
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
+        private readonly UserManager<NuvAdUser> _userManager;
+        private Task<NuvAdUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public CreateModel(AdmissionSys.Models.AdmissionSysContext context)
+        public CreateModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
         {
             _context = context;
+            _userManager = userManager;
         }
 
-        public IActionResult OnGet()
+        public IActionResult OnGet(string prg)
         {
-        ViewData["ProgramsID"] = new SelectList(_context.Programs, "ProgramsID", "ProgramsID");
+        ViewData["ProgramsID"] = prg;
             return Page();
         }
 
@@ -31,6 +36,13 @@ namespace AdmissionSys.Pages.ApplicationList
 
         public async Task<IActionResult> OnPostAsync()
         {
+            NuvAdUser user = await GetCurrentUserAsync();
+            var sturecord = from s in _context.Student select s;
+            sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
+
+            ApplicationList.StudentID= sturecord.FirstOrDefault().StudentID;
+
+
             if (!ModelState.IsValid)
             {
                 return Page();

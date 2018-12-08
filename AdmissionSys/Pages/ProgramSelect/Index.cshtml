@@ -72,13 +72,13 @@
                     </td>
                     <td>
                         @if (item.IsIntakeOpen == true)
-        {
-                <a href="../ApplicationList/Create" class="btn btn-primary"> Apply</a>
-}
+                    {
+                <a href="../ApplicationList/Create?prg=@item.ProgramsID" class="btn btn-primary"> Apply</a>
+                    }
                         @if (item.IsIntakeOpen == false)
-        {
-                <a href="../ApplicationList/Create"><img src="~/images/ban.svg" height="20px" width="20px" alt="not open" /></a>
-}
+                  {
+                <img src="~/images/ban.svg" height="20px" width="20px" alt="not open" />
+                  }
                     </td>
 
                     <td>
