@@ -75,8 +75,7 @@ namespace AdmissionSys.Models
         [ScaffoldColumn(false)]
         public bool DocumentUploaded { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public DateTime LastOpr { get; set; }
 
         public DocumentType? DocumentType { get; set; }
 

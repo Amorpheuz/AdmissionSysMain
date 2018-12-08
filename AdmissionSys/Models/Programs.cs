@@ -26,10 +26,17 @@ namespace AdmissionSys.Models
 
         [Required(ErrorMessage = "Please Specify Minimum Elegibility Criteria for the program")]
         [Display(Name = "Elegibility Criteria")]
-        public int ElegibilityCriteria { get; set; }
+        public string ElegibilityCriteria { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        [Required(ErrorMessage = "Please Specify start date for the program opening admissions")]
+        [Display(Name = "Start Day for opening admissions")]
+        public DateTime StartDate { get; set; }
+
+        [Required(ErrorMessage = "Please Specify end date for the program closing admissions")]
+        [Display(Name = "End Day for closing admissions")]
+        public DateTime EndDate { get; set; }
+
+        public DateTime LastOpr { get; set; }
 
         public ICollection<ApplicationList> ApplicationLists { get; set; }
         public ICollection<Fees> Fees { get; set; }

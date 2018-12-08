@@ -3,15 +3,17 @@ using System;
 using AdmissionSys.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace AdmissionSys.Migrations.AdmissionSys
 {
     [DbContext(typeof(AdmissionSysContext))]
-    partial class AdmissionSysContextModelSnapshot : ModelSnapshot
+    [Migration("20181208202847_altdatetime")]
+    partial class altdatetime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -107,7 +109,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
                     b.Property<string>("Status")
                         .IsRequired();
 
-                    b.Property<int>("StudentID");
+                    b.Property<int?>("StudentID");
 
                     b.HasKey("ApplicationListID");
 
@@ -168,8 +170,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.Property<string>("DocsRequired");
 
-                    b.Property<string>("ElegibilityCriteria")
-                        .IsRequired();
+                    b.Property<int>("ElegibilityCriteria");
 
                     b.Property<DateTime>("EndDate");
 
@@ -284,8 +285,7 @@ namespace AdmissionSys.Migrations.AdmissionSys
 
                     b.HasOne("AdmissionSys.Models.Student", "Student")
                         .WithMany("ApplicationLists")
-                        .HasForeignKey("StudentID")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("StudentID");
                 });
 
             modelBuilder.Entity("AdmissionSys.Models.Documents", b =>

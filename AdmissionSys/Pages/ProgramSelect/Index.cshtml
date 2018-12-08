@@ -1,0 +1,113 @@
+﻿@page
+@model IndexModel
+@{
+}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Index</h2>
+
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <form asp-page="./Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                    <input type="submit" value="Search" class="btn btn-default" /> |
+                    <a asp-page="./Index">Back to full List</a>
+                </p>
+            </div>
+        </form>
+        <table class="table table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Programs[0].ProgramName)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                           asp-route-currentFilter="@Model.CurrentFilter">
+                            <img src="~/images/sortwhite.png" alt="sort" height="25px" width="25px" />
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Programs[0].IsIntakeOpen)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Programs[0].DocsRequired)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Programs[0].StartDate)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                           asp-route-currentFilter="@Model.CurrentFilter">
+                            <img src="~/images/sortwhite.png" alt="sort" height="25px" width="25px" />
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Programs[0].EndDate)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                           asp-route-currentFilter="@Model.CurrentFilter">
+                            <img src="~/images/sortwhite.png" alt="sort" height="25px" width="25px" />
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Programs)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProgramName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsIntakeOpen)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DocsRequired)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @if (item.IsIntakeOpen == true)
+        {
+                <a href="../ApplicationList/Create" class="btn btn-primary"> Apply</a>
+}
+                        @if (item.IsIntakeOpen == false)
+        {
+                <a href="../ApplicationList/Create"><img src="~/images/ban.svg" height="20px" width="20px" alt="not open" /></a>
+}
+                    </td>
+
+                    <td>
+                        <a asp-page="./Edit" asp-route-id="@item.ProgramsID">Edit</a> |
+                        <a asp-page="./Details" asp-route-id="@item.ProgramsID">Details</a> |
+                        <a asp-page="./Delete" asp-route-id="@item.ProgramsID">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+
+        @{
+        var prevDisabled = !Model.Programs.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Programs.HasNextPage ? "disabled" : "";
+        }
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Programs.PageIndex - 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Programs.PageIndex + 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
+</div>

@@ -226,8 +226,7 @@ namespace AdmissionSys.Models
         [ScaffoldColumn(false)]
         public string PersonalMessage { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public DateTime LastOpr { get; set; }
 
         [NotMapped]
         [Display(Name = "Upload Your Photo")]

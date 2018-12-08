@@ -18,6 +18,26 @@
                 <span asp-validation-for="Programs.ProgramName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Programs.StartDate" class="control-label"></label>
+                <input asp-for="Programs.StartDate" class="form-control" />
+                <span asp-validation-for="Programs.StartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programs.EndDate" class="control-label"></label>
+                <input asp-for="Programs.EndDate" class="form-control" />
+                <span asp-validation-for="Programs.EndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programs.ElegibilityCriteria" class="control-label"></label>
+                <input asp-for="Programs.ElegibilityCriteria" class="form-control" />
+                <span asp-validation-for="Programs.ElegibilityCriteria" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Programs.IntakeCapacity" class="control-label"></label>
+                <input asp-for="Programs.IntakeCapacity" class="form-control" />
+                <span asp-validation-for="Programs.IntakeCapacity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <div class="checkbox">
                     <label>
                         <input asp-for="Programs.IsIntakeOpen" /> @Html.DisplayNameFor(model => model.Programs.IsIntakeOpen)

@@ -34,10 +34,11 @@ namespace AdmissionSys.Models
         [ScaffoldColumn(false)]
         public bool FormVerified { get; set; }
 
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
+        public DateTime LastOpr { get; set; }
 
         public string ProgramsID { get; set; }
+
+        public int StudentID { get; set; }
 
         public Student Student { get; set; }
         public Programs Programs { get; set; }
