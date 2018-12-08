@@ -1,0 +1,92 @@
+﻿@page
+@model AdmissionSys.Pages.CropperModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Cropper.js</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css">
+        <style>
+            /* Limit image width to avoid overflow the container */
+            img {
+                max-width: 100%; /* This rule is very important, please do not ignore this! */
+            }
+
+            #canvas {
+                height: 600px;
+                width: 600px;
+                background-color: #ffffff;
+                cursor: default;
+                border: 1px solid black;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <p>
+                <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
+                <input type="file" id="fileInput" accept="image/*" />
+                <input type="button" id="btnCrop" value="Crop" />
+                <input type="button" id="btnRestore" value="Restore" />
+            </p>
+            <div>
+                <canvas id="canvas">
+                    Your browser does not support the HTML5 canvas element.
+                </canvas>
+            </div>		
+
+            <div id="result"></div>
+        </div>
+        
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.3/cropper.js"></script>
+    <script>
+        var canvas  = $("#canvas"),
+            context = canvas.get(0).getContext("2d"),
+            $result = $('#result');
+
+        $('#fileInput').on( 'change', function(){
+            if (this.files && this.files[0]) {
+                if ( this.files[0].type.match(/^image\//) ) {
+                    var reader = new FileReader();
+                    reader.onload = function(evt) {
+                        var img = new Image();
+                        img.onload = function() {
+                            context.canvas.height = img.height;
+                            context.canvas.width  = img.width;
+                            context.drawImage(img, 0, 0);
+                            var cropper = canvas.cropper({
+                                aspectRatio: 35 / 45
+                            });
+                            $('#btnCrop').click(function() {
+                                // Get a string base 64 data url
+                                var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
+                                $result.empty();
+                                $result.html('<a download="PassportPic.png" href=' + croppedImageDataURL+'>Download Image</a><br>');
+                                $result.append($('<img>').attr({ src: croppedImageDataURL, height: "300px",id:"cropImg"}));
+                            });
+                            $('#btnRestore').click(function() {
+                                canvas.cropper('reset');
+                                $result.empty();
+                            });
+                        };
+                        img.src = evt.target.result;
+                    };
+                    reader.readAsDataURL(this.files[0]);
+                }
+                else {
+                    alert("Invalid file type! Please select an image file.");
+                }
+            }
+            else {
+                alert('No file(s) selected.');
+            }
+        });
+    </script>
+    </body>
+    </html>
