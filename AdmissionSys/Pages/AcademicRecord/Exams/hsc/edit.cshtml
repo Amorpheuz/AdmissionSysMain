@@ -1,24 +1,26 @@
 ﻿@page
-@model diploma.diplomaModel
+@using AdmissionSys.Models
+@model hsc.editModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
+
 <div class="row">
     <div class="col-md-10 offset-md-1">
-        <h2>Create</h2>
+        <h2>Edit</h2>
 
         <h4>AcademicRecord</h4>
         <hr />
         <form method="post" id="ssc">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-            <input type="hidden" value="Diploma" asp-for="AcademicRecord.ExamName" />
+            <input type="hidden" value="@Model.AcademicRecord.AcademicRecordID" asp-for="AcademicRecord.AcademicRecordID" />
+            <input type="hidden" value="HSC/Std 12th" asp-for="AcademicRecord.ExamName" />
 
             <div class="form-group">
-                <label class="control-label">Board/ University/ Other Exam/ Certifying body</label>
+                <label asp-for="AcademicRecord.BoardOrUni" class="control-label"></label>
                 <input asp-for="AcademicRecord.BoardOrUni" class="form-control" />
                 <small class="form-text text-muted">
-                    Enter the Board/ University/ Other Exam/ Certifying body of Examination
+                    Enter the Board of Examination
                 </small>
                 <span asp-validation-for="AcademicRecord.BoardOrUni" class="text-danger"></span>
             </div>
@@ -27,18 +29,9 @@
                 <label asp-for="AcademicRecord.SchoolOrCollegeName" class="control-label"></label>
                 <input asp-for="AcademicRecord.SchoolOrCollegeName" class="form-control" />
                 <small class="form-text text-muted">
-                    Enter name of College which you were studying at previously
+                    Enter name of School/College which you were studying at previously
                 </small>
                 <span asp-validation-for="AcademicRecord.SchoolOrCollegeName" class="text-danger"></span>
-            </div>
-
-            <div class="form-group">
-                <label class="control-label"> Diploma: </label>
-                <input asp-for="AcademicRecord.NameOfDegree" class="form-control" />
-                <small class="form-text text-muted">
-                    Enter the name of Diploma degree.
-                </small>
-                <span asp-validation-for="AcademicRecord.NameOfDegree" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -65,54 +58,49 @@
                 </small>
                 <span asp-validation-for="AcademicRecord.LangOfInstruction" class="text-danger"></span>
             </div>
-
+            <div class="form-group">
+                <label asp-for="AcademicRecord.MeritNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.MeritNumber" class="form-control" />
+                <small class="form-text text-muted">
+                    Enter merit number/position achieved in the exam, Enter 0 if unknown
+                </small>
+                <span asp-validation-for="AcademicRecord.MeritNumber" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Marks", new { @id = "Marks", @onclick = "grademarkscheck()" })@Html.Label("Marks")
                 @Html.RadioButtonFor(model => model.AcademicRecord.MarksOrGrade, "Grade", new { @id = "Grade", @onclick = "grademarkscheck()" })@Html.Label("Grade")
             </div>
-            <div id="marks" class="form-group" style="display:none">
-                <label class="control-label"> Marks Obtained</label>
-                <input name="marksobtained" id="marksobtainedid" onchange="percentagecalc()" class="form-control" />
+
+            <div id="marksdiv" class="form-group">
+                <label class="control-label"> Marks/Grade Obtained</label>
+                <input asp-for="AcademicRecord.MarksObtained" id="marksobtainedid" onchange="percentagecalc()" class="form-control" />
                 <small class="form-text text-muted">
-                    Enter the Grade / Percentage obtained
+                    Enter the Marks / Grade obtained
                 </small>
                 <span asp-validation-for="AcademicRecord.MarksObtained" class="text-danger"></span>
 
-                <label class="control-label"> Marks Obtained out of</label>
-                <input name="outofobtained" id="outofid" onchange="percentagecalc()" class="form-control" />
+                <label class="control-label"> Marks Obtained out of/ CGPA</label>
+                <input asp-for="AcademicRecord.ObtainedOutOfOrCGPA" id="outofid" onchange="percentagecalc()" class="form-control" />
                 <small class="form-text text-muted">
                     Marks obtained out of? (e.g. 100 or 200, etc...)
                 </small>
                 <span asp-validation-for="AcademicRecord.ObtainedOutOfOrCGPA" class="text-danger"></span>
 
                 <label class="control-label"> Percentage: </label>
-                <input id="percnt" name="CalcPer" class="form-control" readonly />
+                <input asp-for="AcademicRecord.CalcPer" id="percnt" class="form-control" />
                 <small class="form-text text-muted">
                     Percentage obtained.
                 </small>
                 <span asp-validation-for="AcademicRecord.CalcPer" class="text-danger"></span>
             </div>
-            <div id="grade" class="form-group" style="display:none">
-                <label class="control-label"> Grade Obtained </label>
-                <input name="marksobtained" class="form-control" id="gradeform" />
-                <small class="form-text text-muted">
-                    Enter the Grade obtained
-                </small>
-                <span asp-validation-for="AcademicRecord.MarksObtained" class="text-danger"></span>
 
-                <label class="control-label"> CGPA </label>
-                <input name="outofobtained" class="form-control" id="cgpaform" />
+            <div class="form-group">
+                <label asp-for="AcademicRecord.ACPCMeritNumber" class="control-label"></label>
+                <input asp-for="AcademicRecord.ACPCMeritNumber" class="form-control" />
                 <small class="form-text text-muted">
-                    CGPA obtained(e.g. 9.5 or 9.2, etc...)
+                    Enter the ACPC/ACPDC merit number if you are a science student and applying through the ACPC process. Otherwise your application can be cancelled.
                 </small>
-                <span asp-validation-for="AcademicRecord.ObtainedOutOfOrCGPA" class="text-danger"></span>
-
-                <label class="control-label"> Percentage: </label>
-                <input name="CalcPer" class="form-control" />
-                <small class="form-text text-muted">
-                    Percentage obtained.
-                </small>
-                <span asp-validation-for="AcademicRecord.CalcPer" class="text-danger"></span>
+                <span asp-validation-for="AcademicRecord.ACPCMeritNumber" class="text-danger"></span>
             </div>
 
             <div class="form-group">
@@ -121,27 +109,18 @@
         </form>
         <script>function grademarkscheck() {
                     if (document.getElementById('Marks').checked) {
-                   document.getElementById('marks').style.display = 'block';
-                   document.getElementById('grade').style.display = 'none';
-                    document.getElementById("marksobtained").required = true;
-                    document.getElementById("outof").required = true;
 
-                    document.getElementById("gradeform").required = false;
-                    document.getElementById("cgpaform").required = false;
+                   document.getElementById("percnt").required = true;
                      }
                       else if(document.getElementById('Grade').checked){
-                       document.getElementById('grade').style.display = 'block';
-                         document.getElementById('marks').style.display = 'none';
 
-                         document.getElementById("marksobtained").required = false;
-                    document.getElementById("outof").required = false;
-
-                    document.getElementById("gradeform").required = true;
-                    document.getElementById("cgpaform").required = true;
+                document.getElementById("percnt").required = false;
                     }
                        }</script>
         <script>function percentagecalc()
             {
+        if(!document.getElementById('Grade').checked)
+        {
             var marks = document.forms["ssc"]["marksobtainedid"].value;
             var outof = document.forms["ssc"]["outofid"].value;
 
@@ -154,5 +133,5 @@
                 {
                 document.getElementById("percnt").value = "";
                 }
+        }
             }</script>
-

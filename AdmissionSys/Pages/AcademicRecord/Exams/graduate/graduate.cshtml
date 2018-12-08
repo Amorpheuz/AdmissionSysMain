@@ -1,7 +1,7 @@
 ﻿@page
 @model graduate.graduateModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit";
 }
 <div class="row">
     <div class="col-md-10 offset-md-1">
@@ -27,7 +27,7 @@
                 <label class="control-label"> College Name</label>
                 <input asp-for="AcademicRecord.SchoolOrCollegeName" class="form-control" />
                 <small class="form-text text-muted">
-                    Enter name of School/College which you were studying at previously
+                    Enter name of College which you were studying at previously
                 </small>
                 <span asp-validation-for="AcademicRecord.SchoolOrCollegeName" class="text-danger"></span>
             </div>
