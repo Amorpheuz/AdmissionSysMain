@@ -25,16 +25,7 @@
                 <input asp-for="ApplicationList.Status" class="form-control" />
                 <span asp-validation-for="ApplicationList.Status" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="ApplicationList.PrioAreaOfResearch" class="control-label"></label>
-                <input asp-for="ApplicationList.PrioAreaOfResearch" class="form-control" />
-                <span asp-validation-for="ApplicationList.PrioAreaOfResearch" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ApplicationList.ProgramsID" class="control-label"></label>
-                <select asp-for="ApplicationList.ProgramsID" class="form-control" asp-items="ViewBag.ProgramsID"></select>
-                <span asp-validation-for="ApplicationList.ProgramsID" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary-v3" />
             </div>

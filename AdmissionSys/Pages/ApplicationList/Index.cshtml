@@ -14,17 +14,16 @@
     <thead>
         <tr>
             <th>
+                Program Name
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ApplicationList[0].ApplicationCat)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ApplicationList[0].Status)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationList[0].PrioAreaOfResearch)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ApplicationList[0].Programs)
-            </th>
+
+           
             <th></th>
         </tr>
     </thead>
@@ -32,20 +31,16 @@
 @foreach (var item in Model.ApplicationList) {
         <tr>
             <td>
+                @Html.DisplayFor(modelItem => item.Programs.ProgramName)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.ApplicationCat)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
+     
             <td>
-                @Html.DisplayFor(modelItem => item.PrioAreaOfResearch)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Programs.ProgramsID)
-            </td>
-            <td>
-                <a asp-page="./Edit" asp-route-id="@item.ApplicationListID">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.ApplicationListID">Details</a> |
                 <a asp-page="./Delete" asp-route-id="@item.ApplicationListID">Delete</a>
             </td>
         </tr>
