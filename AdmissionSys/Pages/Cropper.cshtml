@@ -9,7 +9,11 @@
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Cropper.js</title>
+        <title>Cropping Utility</title>
+        <link rel="stylesheet" href="~/lib/cssMain/bootstrap.min.css"
+              asp-fallback-href="~/lib/cssMain/bootstrap/bootstrap.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.4.3/cropper.min.css">
         <style>
             /* Limit image width to avoid overflow the container */
@@ -19,7 +23,7 @@
 
             #canvas {
                 height: 600px;
-                width: 600px;
+                width: 100%;
                 background-color: #ffffff;
                 cursor: default;
                 border: 1px solid black;
@@ -27,23 +31,33 @@
         </style>
     </head>
     <body>
-        <div class="container">
-            <p>
-                <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
-                <input type="file" id="fileInput" accept="image/*" />
-                <input type="button" id="btnCrop" value="Crop" />
-                <input type="button" id="btnRestore" value="Restore" />
-            </p>
-            <div>
-                <canvas id="canvas">
-                    Your browser does not support the HTML5 canvas element.
-                </canvas>
-            </div>		
+        <div class="container body-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <a asp-page="/Student/Create"> &lt;&lt; Go Back</a>
+                    <p>
+                        <!-- Below are a series of inputs which allow file selection and interaction with the cropper api -->
+                        <div class="custom-file">
+                            <input type="file" id="fileInput" accept="image/*" class="custom-file-input" id="cropFile"/>
+                            <label class="custom-file-label" for="cropFile">Select an Image to Crop</label>
+                        </div><br/><br/>
+                        <input type="button" id="btnCrop" value="Crop" class="btn btn-primary-v3"/>
+                        <input type="button" id="btnRestore" value="Restore" class="btn btn-secondary"/>
+                    </p>
+                    <div>
+                        <canvas id="canvas">
+                            Your browser does not support the HTML5 canvas element.
+                        </canvas>
+                    </div>
 
-            <div id="result"></div>
+                    <div id="result"></div>
+                </div>
+            </div>
         </div>
         
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropper/2.3.3/cropper.js"></script>
     <script>
         var canvas  = $("#canvas"),
@@ -67,7 +81,7 @@
                                 // Get a string base 64 data url
                                 var croppedImageDataURL = canvas.cropper('getCroppedCanvas').toDataURL("image/png");
                                 $result.empty();
-                                $result.html('<a download="PassportPic.png" href=' + croppedImageDataURL+'>Download Image</a><br>');
+                                $result.html('<br><a download="PassportPic.png" href=' + croppedImageDataURL +' class="btn btn-primary-v3">Download Image</a><br><br>');
                                 $result.append($('<img>').attr({ src: croppedImageDataURL, height: "300px",id:"cropImg"}));
                             });
                             $('#btnRestore').click(function() {
