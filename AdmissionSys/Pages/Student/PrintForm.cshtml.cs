@@ -36,14 +36,22 @@ namespace AdmissionSys.Pages.Student
         public IList<Models.AcademicRecord> AcademicRecordDiploma { get; set; }
 
         public IList<Models.AcademicRecord> AcademicRecordGraduate { get; set; }
-        public bool render;
+       
 
         public async Task OnGetAsync()
         {
             NuvAdUser user = await GetCurrentUserAsync();
             var stuAllDets = from s in _context.Student select s;
-            Student = stuAllDets.Where(ab => ab.userID.Equals(user.Id)).ToList();
-            
-        }
+            stuAllDets = stuAllDets.Where(ab => ab.userID.Equals(user.Id));
+            Student = stuAllDets.ToList();
+
+            var academicRecordsIQ = from a in _context.AcademicRecord select a;
+            AcademicRecord = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("SSC/Std 10th")).ToList();
+            AcademicRecordHSC = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("HSC/Std 12th")).ToList();
+            AcademicRecordCerti = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Certificate")).ToList();
+            AcademicRecordDiploma = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Diploma")).ToList();
+            AcademicRecordGraduate = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Graduate/Post Graduate")).ToList();
+        
+    }
     }
 }

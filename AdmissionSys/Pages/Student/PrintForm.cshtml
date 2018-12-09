@@ -124,22 +124,96 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>SSC</td>
-                        <td>CBSE</td>
-                        <td>Indian School Montero</td>
-                        <td>29/8/2013</td>
-                        <td>321</td>
-                        <td>500</td>
-                    </tr>
-                    <tr>
-                        <td>HSC</td>
-                        <td>GSHSEB</td>
-                        <td>Kayman School Kami</td>
-                        <td>31/5/2015</td>
-                        <td>AA</td>
-                        <td>10</td>
-                    </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecord)
+        {
+                            <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                    </td>
+                    <td>
+                        <label class="control-label">
+                            @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                        </label>
+                    </td>
+}
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordHSC)
+    {
+                        <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+}
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordCerti)
+    {
+                        <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+}
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordDiploma)
+    {
+                        <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+}
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordGraduate)
+    {
+                        <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+}
+                        </tr>
                     </tbody>
                 </table>
             </div>
