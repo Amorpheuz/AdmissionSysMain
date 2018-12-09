@@ -30,11 +30,27 @@ namespace AdmissionSys.Pages.Student
             this.hostingEnvironment = environment;
         }
 
+        public bool render;
+
         public async Task<IActionResult> OnGetAsync()
         {
             NuvAdUser user = await GetCurrentUserAsync();
-            ViewData["userId"] = user?.Id;
-            return Page();
+            var sturecord = from s in _context.Student select s;
+            sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
+
+            if (sturecord.Count() < 1)
+            {
+               
+                    render = true;
+                    ViewData["userId"] = user?.Id;
+                return Page();
+            
+            }
+            else
+            {
+                render = false;
+                    return Page();
+             }
         }
 
         [BindProperty]
@@ -45,6 +61,7 @@ namespace AdmissionSys.Pages.Student
             //Student.StudentSignature = "wwrc";
             Student.StudentPhoto = "placeholder";
             Student.StudentSignature = "placeholder";
+            Student.FillPersonalInfo = true;
             Savephoto();
             await SavesignAsync();
             if (!ModelState.IsValid)

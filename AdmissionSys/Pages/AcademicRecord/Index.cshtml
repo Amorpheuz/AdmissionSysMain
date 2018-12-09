@@ -7,6 +7,8 @@
 
 <div class="row">
     <div class="col-md-10 offset-md-1">
+        @if (Model.render == true)
+    {
         <h2>Index</h2>
 
 
@@ -30,7 +32,7 @@
                             Marks/Grade
                         </th>
                         <th>
-                           Out Of/CGPA
+                            Out Of/CGPA
                         </th>
                         <th>
                             Edit
@@ -53,32 +55,32 @@
                             </div>
                         </th>
                         @foreach (var item in Model.AcademicRecord)
-    {   
+                    {
 
-                    <td>@Html.DisplayFor(modelItem=> item.BoardOrUni)</td>
-                    <td>@Html.DisplayFor(modelItem=> item.SchoolOrCollegeName)</td>
-                    <td>@Html.DisplayFor(modelItem=> item.MonthYearOfPass)</td>
-                    <td>
-                       @Html.DisplayFor(modelItem=> item.MarksObtained)
-                    </td>
-                    <td>
-                        <label class="control-label">
-                            @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
-                        </label>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/exams/ssc/edit?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
-                        </center>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
-                        </center>
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/exams/ssc/edit?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
+                            </center>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
+                            </center>
 
-                    </td>
-                        }
-                    
+                        </td>
+                }
+
                     </tr>
                     <tr>
                         <th>
@@ -89,31 +91,31 @@
                             </div>
                         </th>
                         @foreach (var item in Model.AcademicRecordHSC)
-    {
-                    <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
-                    <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MarksObtained)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
 
-                    </td>
-                    <td>
-                        <label class="control-label">
-                            @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
-                        </label>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/exams/hsc/edit?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
-                        </center>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
-                        </center>
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/exams/hsc/edit?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
+                            </center>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
+                            </center>
 
-                    </td>
-}
+                        </td>
+                }
                     </tr>
                     <tr>
                         <th>
@@ -124,106 +126,115 @@
                             </div>
                         </th>
                         @foreach (var item in Model.AcademicRecordCerti)
-    {
-                    <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
-                    <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
-                    <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.MarksObtained)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
 
-                    </td>
-                    <td>
-                        <label class="control-label">
-                            @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
-                        </label>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/exams/certi/edit?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
-                        </center>
-                    </td>
-                    <td style="width:5%">
-                        <center>
-                            <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
-                        </center>
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/exams/certi/edit?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
+                            </center>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
+                            </center>
 
-                    </td>
-}
+                        </td>
+                }
                     </tr>
-                <tr>
-                    <th>
-                        Diploma                                    <div style="text-align: right;vertical-align:top; font-size: x-small">
-                            [ <a class="qualification" style="cursor:pointer;" onclick="location.href='/AcademicRecord/Create?ex=diploma'">
-                                Add
-                            </a>]
-                        </div>
-                    </th>
-                    @foreach (var item in Model.AcademicRecordDiploma)
-    {
-                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
-                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
-                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MarksObtained)
+                    <tr>
+                        <th>
+                            Diploma                                    <div style="text-align: right;vertical-align:top; font-size: x-small">
+                                [ <a class="qualification" style="cursor:pointer;" onclick="location.href='/AcademicRecord/Create?ex=diploma'">
+                                    Add
+                                </a>]
+                            </div>
+                        </th>
+                        @foreach (var item in Model.AcademicRecordDiploma)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
 
-                </td>
-                <td>
-                    <label class="control-label">
-                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
-                    </label>
-                </td>
-                <td style="width:5%">
-                    <center>
-                        <a href="/AcademicRecord/exams/diploma/edit?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
-                    </center>
-                </td>
-                <td style="width:5%">
-                    <center>
-                        <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
-                    </center>
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/exams/diploma/edit?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
+                            </center>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
+                            </center>
 
-                </td>
-}
-                </tr>
-                <tr>
-                    <th>
-                        Graduate/Post Graduate                                    <div style="text-align: right;vertical-align:top; font-size: x-small">
-                            [ <a class="qualification" style="cursor:pointer;" onclick="location.href='/AcademicRecord/Create?ex=graduate'">
-                                Add
-                            </a>]
-                        </div>
-                    </th>
-                    @foreach (var item in Model.AcademicRecordGraduate)
-    {
-                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
-                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
-                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MarksObtained)
+                        </td>
+                }
+                    </tr>
+                    <tr>
+                        <th>
+                            Graduate/Post Graduate                                    <div style="text-align: right;vertical-align:top; font-size: x-small">
+                                [ <a class="qualification" style="cursor:pointer;" onclick="location.href='/AcademicRecord/Create?ex=graduate'">
+                                    Add
+                                </a>]
+                            </div>
+                        </th>
+                        @foreach (var item in Model.AcademicRecordGraduate)
+                    {
+                        <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                        <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                        <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MarksObtained)
 
-                </td>
-                <td>
-                    <label class="control-label">
-                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
-                    </label>
-                </td>
-                <td style="width:5%">
-                    <center>
-                        <a href="/AcademicRecord/exams/graduate/edit?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px"/></a>
-                    </center>
-                </td>
-                <td style="width:5%">
-                    <center>
-                        <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem=>item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
-                    </center>
+                        </td>
+                        <td>
+                            <label class="control-label">
+                                @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                            </label>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/exams/graduate/edit?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/edit.svg" height="20px" width="20px" /></a>
+                            </center>
+                        </td>
+                        <td style="width:5%">
+                            <center>
+                                <a href="/AcademicRecord/Delete?id=@Html.DisplayFor(modelItem => item.AcademicRecordID)"><img src="~/images/ban.svg" height="20px" width="20px" /></a>
+                            </center>
 
-                </td>
-}
-                </tr>
-                   
+                        </td>
+                }
+                    </tr>
+
                 </tbody>
             </table>
         </div>
+}
 
+        @if (Model.render == false)
+    {
+        <div>
+            <h2>
+                The Academic Records are freezed as you have already applied for a course.
+            </h2>
+        </div>
+}
     </div>
 </div>

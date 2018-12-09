@@ -41,6 +41,9 @@ public enum ApplicationCat
         public bool AcademicRecAdded { get; set; }
 
         [ScaffoldColumn(false)]
+        public bool DocumentUploaded { get; set; }
+
+        [ScaffoldColumn(false)]
         public bool FormVerified { get; set; }
 
         public DateTime LastOpr { get; set; }

@@ -89,6 +89,9 @@ namespace AdmissionSys.Pages.ApplicationList
 
             ApplicationList.Status = "Applied";
             ApplicationList.LastOpr = DateTime.Now;
+            ApplicationList.DocumentUploaded = true;
+            ApplicationList.AcademicRecAdded = true;
+            
             if (!ModelState.IsValid)
             {
                 return Page();

@@ -35,18 +35,46 @@ namespace AdmissionSys.Pages.AcademicRecord
 
         public IList<Models.AcademicRecord> AcademicRecordGraduate { get; set; }
 
+        public bool render;
+
         public async Task OnGetAsync()
         {
             NuvAdUser user = await GetCurrentUserAsync();
             var sturecord = from s in _context.Student select s;
             sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
 
-            var academicRecordsIQ = from a in _context.AcademicRecord select a;
-            AcademicRecord = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("SSC/Std 10th")).ToList();
-            AcademicRecordHSC = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("HSC/Std 12th")).ToList();
-            AcademicRecordCerti = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Certificate")).ToList();
-            AcademicRecordDiploma = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Diploma")).ToList();
-            AcademicRecordGraduate= academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Graduate/Post Graduate")).ToList();
+            var applicationrec = from app in _context.ApplicationList select app;
+            applicationrec = applicationrec.Where(b => b.StudentID == sturecord.FirstOrDefault().StudentID);
+
+            if(applicationrec.Count()<1)
+            {
+                render = true;
+                var academicRecordsIQ = from a in _context.AcademicRecord select a;
+                AcademicRecord = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("SSC/Std 10th")).ToList();
+                AcademicRecordHSC = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("HSC/Std 12th")).ToList();
+                AcademicRecordCerti = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Certificate")).ToList();
+                AcademicRecordDiploma = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Diploma")).ToList();
+                AcademicRecordGraduate = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Graduate/Post Graduate")).ToList();
+            }
+            else
+            {
+                if(applicationrec.FirstOrDefault().AcademicRecAdded==true)
+                {
+                    render = false;
+                }
+                else
+                {
+                    render = true;
+                    var academicRecordsIQ = from a in _context.AcademicRecord select a;
+                    AcademicRecord = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("SSC/Std 10th")).ToList();
+                    AcademicRecordHSC = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("HSC/Std 12th")).ToList();
+                    AcademicRecordCerti = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Certificate")).ToList();
+                    AcademicRecordDiploma = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Diploma")).ToList();
+                    AcademicRecordGraduate = academicRecordsIQ.Where(a => a.StudentID == sturecord.FirstOrDefault().StudentID && a.ExamName.Equals("Graduate/Post Graduate")).ToList();
+                }
+            }
+
+
 
         }
     }

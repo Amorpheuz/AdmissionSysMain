@@ -72,8 +72,6 @@ namespace AdmissionSys.Models
         public string DocumentsID { get; set; }
         public string DocumentPath { get; set; }
 
-        [ScaffoldColumn(false)]
-        public bool DocumentUploaded { get; set; }
 
         public DateTime LastOpr { get; set; }
 

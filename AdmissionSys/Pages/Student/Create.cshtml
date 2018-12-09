@@ -12,6 +12,8 @@
         <hr />
     </div>
 </div>
+@if (Model.render == true)
+{
 <div class="row">
     <div class="col-md-10 offset-md-1">
         <form method="post" enctype="multipart/form-data">
@@ -261,6 +263,15 @@
         <a asp-page="Index">Back to List</a>
     </div>
 </div>
+}
+@if(Model.render==false)
+{
+<div>
+    <h2>
+        You have already filled your personal details.<a href="#">Go back</a>
+    </h2>
+</div>
+}
 
 
 

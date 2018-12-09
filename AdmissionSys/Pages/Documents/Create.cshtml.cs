@@ -37,30 +37,70 @@ namespace AdmissionSys.Pages.Documents
         [BindProperty]
         public Models.Documents Documents { get; set; }
 
+        public bool render;
+
         public async Task<IActionResult> OnPostAsync()
         {
             NuvAdUser user = await GetCurrentUserAsync();
             var sturecord = from s in _context.Student select s;
             sturecord = sturecord.Where(ab => ab.userID.Equals(user.Id));
+
+            var applicationrec = from app in _context.ApplicationList select app;
+            applicationrec = applicationrec.Where(b => b.StudentID == sturecord.FirstOrDefault().StudentID);
+
+
             int stuid = sturecord.FirstOrDefault().StudentID;
 
             string path = hostingEnvironment.WebRootPath + "/uploads/" + stuid;
-            if (Documents.DocActual != null)
+            if (applicationrec.Count() < 1)
             {
-                if (!Directory.Exists(path))
+                render = true;
+                if (Documents.DocActual != null)
                 {
-                    Directory.CreateDirectory(path);
+                    if (!Directory.Exists(path))
+                    {
+                        Directory.CreateDirectory(path);
+                    }
+                    var fileName = GetUniqueName(Documents.DocActual.FileName);
+                    var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
+                    var filePath = Path.Combine(uploads, fileName);
+                    Documents.DocActual.CopyTo(new FileStream(filePath, FileMode.Create));
+                    string fpath = "/uploads/" + stuid + "/" + fileName; ; // Set the file name
+                    return RedirectToPage("./preview", new { pathp = fileName, doctype = Documents.DocumentType });
                 }
-                var fileName = GetUniqueName(Documents.DocActual.FileName);
-                var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
-                var filePath = Path.Combine(uploads, fileName);
-                Documents.DocActual.CopyTo(new FileStream(filePath, FileMode.Create));
-                string fpath = "/uploads/" + stuid + "/" + fileName; ; // Set the file name
-                return RedirectToPage("./preview", new { pathp = fileName ,doctype =Documents.DocumentType});
+                else
+                {
+                    return Page();
+                }
             }
             else
             {
-                return Page();
+                if (applicationrec.FirstOrDefault().DocumentUploaded == true)
+                {
+                    render = false;
+                    return Page();
+                }
+                else
+                {
+                    render = true;
+                    if (Documents.DocActual != null)
+                    {
+                        if (!Directory.Exists(path))
+                        {
+                            Directory.CreateDirectory(path);
+                        }
+                        var fileName = GetUniqueName(Documents.DocActual.FileName);
+                        var uploads = Path.Combine(hostingEnvironment.WebRootPath, path);
+                        var filePath = Path.Combine(uploads, fileName);
+                        Documents.DocActual.CopyTo(new FileStream(filePath, FileMode.Create));
+                        string fpath = "/uploads/" + stuid + "/" + fileName; ; // Set the file name
+                        return RedirectToPage("./preview", new { pathp = fileName, doctype = Documents.DocumentType });
+                    }
+                    else
+                    {
+                        return Page();
+                    }
+                }
             }
         }
 
