@@ -1,0 +1,215 @@
+﻿@page
+@model AdmissionSys.Pages.Admin.Student.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>Index</h2>
+        <p>
+            <a asp-page="Create">Create New</a>
+        </p>
+        <form asp-page="./Index" method="get">
+            <div class="form-actions no-color">
+                <p>
+                    Find by name: <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+                    <input type="submit" value="Search" class="btn btn-default" /> |
+                    <a asp-page="./Index">Back to full List</a>
+                </p>
+            </div>
+        </form>
+        <table class="table table-responsive">
+            <caption>List of Students</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        Signature Preview
+                    </th>
+                    <th>
+                        Photo Preview
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].StudentName)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort"
+                           asp-route-currentFilter="@Model.CurrentFilter">
+                            <img src="~/images/sortwhite.png" alt="sort" height="25px" width="25px" />
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].StudentID)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].LastOpr)
+                        <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort"
+                           asp-route-currentFilter="@Model.CurrentFilter">
+                            <img src="~/images/sortwhite.png" alt="sort" height="25px" width="25px" />
+                        </a>
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].StudentAddress)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].City)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].PostalCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].State)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].Nationality)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].Gender)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].StudentGuardianName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].RelationWithGuardian)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].BloodGroup)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].DateOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].ResidencePhone)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].PlaceOfBirth)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].GuardianMobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].ApplicantsMobileNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].FamilyIncome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].AadharNumber)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].Caste)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].GuardianOccupation)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Students[0].PhysicallyHandicapStatus)
+                    </th>
+                    <th> Options</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Students)
+            {
+                <tr>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.StudentSignature)" height="50px" width="50px" />
+                    </td>
+                    <td>
+                        <img src="@Html.DisplayFor(modelItem => item.StudentPhoto)" height="50px" width="50px" />
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastOpr)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostalCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nationality)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StudentGuardianName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.RelationWithGuardian)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BloodGroup)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResidencePhone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PlaceOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuardianMobileNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ApplicantsMobileNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FamilyIncome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AadharNumber)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Caste)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GuardianOccupation)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PhysicallyHandicapStatus)
+                    </td>
+                    <td>
+                        <a asp-page="../../Student/Edit" asp-route-id="@item.StudentID">Edit</a> |
+                        <a asp-page="../../Student/Details" asp-route-id="@item.StudentID">Details</a> |
+                        <a asp-page="../../Student/Delete" asp-route-id="@item.StudentID">Delete</a>
+                    </td>
+                </tr>
+        }
+            </tbody>
+        </table>
+        @{
+        var prevDisabled = !Model.Students.HasPreviousPage ? "disabled" : "";
+        var nextDisabled = !Model.Students.HasNextPage ? "disabled" : "";
+        }
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Students.PageIndex - 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @prevDisabled">
+            Previous
+        </a>
+        <a asp-page="./Index"
+           asp-route-sortOrder="@Model.CurrentSort"
+           asp-route-pageIndex="@(Model.Students.PageIndex + 1)"
+           asp-route-currentFilter="@Model.CurrentFilter"
+           class="btn btn-default @nextDisabled">
+            Next
+        </a>
+    </div>
+</div>
+
