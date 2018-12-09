@@ -62,6 +62,7 @@ namespace AdmissionSys.Pages.Student
             Student.StudentPhoto = "placeholder";
             Student.StudentSignature = "placeholder";
             Student.FillPersonalInfo = true;
+            Student.LastOpr = DateTime.Now;
             Savephoto();
             await SavesignAsync();
             if (!ModelState.IsValid)
