@@ -28,6 +28,16 @@ body {
     margin: 15px;
 }
 
+
+.card-columns {
+    @include media-breakpoint-only(lg) { column-count: 3; }
+
+    @include media-breakpoint-only(xl) { column-count: 4;}
+}
+    
+
+
+
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */

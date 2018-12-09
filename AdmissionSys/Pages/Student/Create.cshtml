@@ -199,15 +199,25 @@
                     <span asp-validation-for="Student.GuardianOccupation" class="text-danger"></span>
                 </div>
                 <div class="form-group col-md-6">
-                    <label asp-for="Student.PhysicallyHandicapStatus" class="control-label"></label>
-                    <input asp-for="Student.PhysicallyHandicapStatus" class="form-control" />
+                    <div class="custom-control custom-checkbox">
+                        <br/>
+                        <input type="checkbox" class="custom-control-input" asp-for="Student.PhysicallyHandicapStatus">
+                        <label class="custom-control-label" asp-for="Student.PhysicallyHandicapStatus"></label>
+                    </div>
                     <small class="form-text text-muted">
-                        Enter the name of the kind of Physical Handicap you have, if any. Enter <kbd>None</kbd> if you don't
+                        Check the box if Physically Challenged
                     </small>
                     <span asp-validation-for="Student.PhysicallyHandicapStatus" class="text-danger"></span>
                 </div>
             </div>
             <hr />
+            <div class="form-row">
+                <div class="form-group">
+                    <h4>Crop Utility</h4>
+                    <p>If you need to crop your picture in order to meet the required Passport size dimensions, use the below utility</p>
+                    <a asp-page="../Cropper">Click Here</a>
+                </div>
+            </div>
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <div class="custom-file">
