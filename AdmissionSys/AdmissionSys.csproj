@@ -32,12 +32,11 @@
     <Folder Include="Pages\AcademicRecord\Exams\diploma\" />
     <Folder Include="Pages\AcademicRecord\Exams\graduate\" />
     <Folder Include="Pages\ProgramSelect\" />
-<<<<<<< HEAD
-=======
+
     <Folder Include="Pages\Admin\" />
     <Folder Include="Pages\Admin\Student\" />
     <Folder Include="Pages\Admin\Document\" />
->>>>>>> dd7a744... aded new document view feature for admin
+
   </ItemGroup>
 
   <ItemGroup>
