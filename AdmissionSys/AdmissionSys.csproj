@@ -32,8 +32,6 @@
     <Folder Include="Pages\AcademicRecord\Exams\diploma\" />
     <Folder Include="Pages\AcademicRecord\Exams\graduate\" />
     <Folder Include="Pages\ProgramSelect\" />
-    <Folder Include="Pages\Admin\" />
-    <Folder Include="Pages\Admin\Student\" />
   </ItemGroup>
 
   <ItemGroup>

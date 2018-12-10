@@ -1,0 +1,219 @@
+﻿@page
+@model AdmissionSys.Pages.Admin.Student.DetailsModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+<div>
+    <div class="container-wrap" id="content">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3>General Details</h3>
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <td colspan="2">
+                                <b>Program(s) Applied For:</b><br>
+                                @foreach (var item in Model.ApplicationList)
+                                {
+                                    @Html.DisplayFor(modelItem => item.Programs.ProgramName)<br>
+                                }
+                            </td>
+                            <td>
+                                <b>Applied Under Category:</b><br>
+
+                                @foreach (var item in Model.ApplicationList)
+                                {
+                                    @Html.DisplayFor(modelItem => item.ApplicationCat)<br>
+                                }
+
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Application ID</b><br> @Model.Student[0].StudentID</td>
+                            <td><b>Name</b><br> @Model.Student[0].StudentName</td>
+                            <td><b>Nationality</b><br> @Model.Student[0].Nationality</td>
+                        </tr>
+                        <tr>
+                            <td><b>Gender</b><br> @Model.Student[0].Gender</td>
+                            <td><b>Blood Group</b><br> @Model.Student[0].BloodGroup</td>
+                            <td><b>Caste</b><br> @Model.Student[0].Caste</td>
+                        </tr>
+                        <tr>
+                            <td><b>Date of Birth</b><br> @Model.Student[0].DateOfBirth</td>
+                            <td><b>Place of Birth</b><br> @Model.Student[0].PlaceOfBirth</td>
+                            <td rowspan="3">
+                                <b>Picture</b><br>
+                                <div style="width:100%; height:100%;" class="d-flex justify-content-center">
+                                    <img src="@Model.Student[0].StudentPhoto" alt="TF University" class="img-fluid">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>Mobile Number</b><br> @Model.Student[0].ApplicantsMobileNumber</td>
+                            <td><b>Residence Phone</b><br> @Model.Student[0].ResidencePhone</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <b>Address</b><br>
+                                @Model.Student[0].StudentAddress
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><b>City</b><br> @Model.Student[0].City</td>
+                            <td><b>State</b><br> @Model.Student[0].State</td>
+                            <td><b>Postal Code</b><br> @Model.Student[0].PostalCode</td>
+                        </tr>
+                        <tr>
+                            <td><b>Guardian Name</b><br> @Model.Student[0].StudentGuardianName</td>
+                            <td><b>Relationship</b><br> @Model.Student[0].RelationWithGuardian</td>
+                            <td><b>Guardian's Mobile Number</b><br> @Model.Student[0].GuardianMobileNumber</td>
+                        </tr>
+                        <tr>
+                            <td><b>Occupation of Guardian</b><br> @Model.Student[0].GuardianOccupation</td>
+                            <td><b>Family Income</b><br> @Model.Student[0].FamilyIncome</td>
+                            <td><b>Physically Challenged?</b><br> @Model.Student[0].PhysicallyHandicapStatus</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <hr>
+                <h3>Academic Record</h3>
+                <table class="table table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>
+                                Qualification
+                            </th>
+                            <th>
+                                Board/University
+                            </th>
+                            <th>
+                                Faculty/College Name
+                            </th>
+                            <th>
+                                Passing Date
+                            </th>
+                            <th>
+                                Marks/Grade
+                            </th>
+                            <th>
+                                Out Of/CGPA
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecord)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                                </td>
+                                <td>
+                                    <label class="control-label">
+                                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                                    </label>
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordHSC)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                                </td>
+                                <td>
+                                    <label class="control-label">
+                                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                                    </label>
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordCerti)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                                </td>
+                                <td>
+                                    <label class="control-label">
+                                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                                    </label>
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordDiploma)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                                </td>
+                                <td>
+                                    <label class="control-label">
+                                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                                    </label>
+                                </td>
+                            }
+                        </tr>
+                        <tr>
+                            @foreach (var item in Model.AcademicRecordGraduate)
+                            {
+                                <td>@Html.DisplayFor(modelItem => item.ExamName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.BoardOrUni)</td>
+                                <td>@Html.DisplayFor(modelItem => item.SchoolOrCollegeName)</td>
+                                <td>@Html.DisplayFor(modelItem => item.MonthYearOfPass)</td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.MarksObtained)
+
+                                </td>
+                                <td>
+                                    <label class="control-label">
+                                        @Html.DisplayFor(modelItem => item.ObtainedOutOfOrCGPA)
+                                    </label>
+                                </td>
+                            }
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+    <div class="row">
+        <div class="col-md-2">
+            <b>Date of Submission</b><br><br><br>
+            <hr>
+        </div>
+        <div class="col-md-8">
+        </div>
+        <div class="col-md-2">
+            <b>Signature</b><br><br><br>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-10 offset-md-1">
+            <a asp-page="./Index">Back to List</a>
+        </div>
+    </div>
+    </div>
+</div>
