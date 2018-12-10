@@ -48,9 +48,22 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
-                            <td colspan="3"><b>Program Applied For</b><br> BCA</td>
+                            <td colspan="2">
+                                <b>Program(s) Applied For:</b><br>
+                                @foreach (var item in Model.ApplicationList)
+        {
+                        @Html.DisplayFor(modelItem => item.Programs.ProgramName)<br>
+}
+                                </td>
+                                <td><b>Applied Under Category:</b><br>
 
-                        </tr>
+                                @foreach (var item in Model.ApplicationList)
+        {
+                        @Html.DisplayFor(modelItem => item.ApplicationCat)<br>
+}
+                          
+                            </td>
+                            </tr>
                         <tr>
                             <td><b>Application ID</b><br> @Model.Student[0].StudentID</td>
                             <td><b>Name</b><br> @Model.Student[0].StudentName</td>

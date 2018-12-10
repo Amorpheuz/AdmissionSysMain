@@ -36,7 +36,9 @@ namespace AdmissionSys.Pages.Student
         public IList<Models.AcademicRecord> AcademicRecordDiploma { get; set; }
 
         public IList<Models.AcademicRecord> AcademicRecordGraduate { get; set; }
-       
+
+        public IList<Models.ApplicationList> ApplicationList { get; set; }
+
 
         public async Task OnGetAsync()
         {
@@ -51,7 +53,9 @@ namespace AdmissionSys.Pages.Student
             AcademicRecordCerti = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Certificate")).ToList();
             AcademicRecordDiploma = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Diploma")).ToList();
             AcademicRecordGraduate = academicRecordsIQ.Where(a => a.StudentID == stuAllDets.FirstOrDefault().StudentID && a.ExamName.Equals("Graduate/Post Graduate")).ToList();
-        
-    }
+
+            ApplicationList = await _context.ApplicationList.Include(a => a.Programs).Where(c => c.StudentID == stuAllDets.FirstOrDefault().StudentID).ToListAsync();
+
+        }
     }
 }
