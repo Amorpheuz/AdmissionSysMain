@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 
 namespace AdmissionSys.Pages.Documents
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class DeleteModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

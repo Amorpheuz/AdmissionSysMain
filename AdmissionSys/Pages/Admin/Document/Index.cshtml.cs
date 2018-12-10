@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdmissionSys.Pages.Admin.Document
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Approver")]
     public class IndexModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
@@ -25,7 +25,7 @@ namespace AdmissionSys.Pages.Admin.Document
 
         public IList<Models.Documents> Documents { get; set; }
 
-        public async Task OnGetAsync(int? id)
+        public void OnGet(int? id)
         {
             var DocumentsIQ = from a in _context.Documents select a;
 

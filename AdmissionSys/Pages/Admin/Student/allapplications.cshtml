@@ -42,9 +42,12 @@
             </td>
 
             <td>
-                <a asp-page="./moreoptions" asp-route-id="@item.ApplicationListID">Delete</a>
+                <a href="/admin/student/moreoptions?id=@item.ApplicationListID&&sid=@item.StudentID&&pid=@item.ProgramsID">More Options</a>
             </td>
         </tr>
         }
     </tbody>
 </table>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>

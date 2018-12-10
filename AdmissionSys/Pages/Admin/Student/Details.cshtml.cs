@@ -12,6 +12,7 @@ using AdmissionSys.Areas.Identity.Data;
 
 namespace AdmissionSys.Pages.Admin.Student
 {
+    [Authorize(Roles = "Admin,Approver")]
     public class DetailsModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

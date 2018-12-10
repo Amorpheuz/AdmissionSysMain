@@ -12,6 +12,7 @@ using AdmissionSys.Areas.Identity.Data;
 
 namespace AdmissionSys.Pages.Student
 {
+    [Authorize(Roles = "Admin,Applicant,Approver")]
     public class PrintFormModel : PageModel
     {
 

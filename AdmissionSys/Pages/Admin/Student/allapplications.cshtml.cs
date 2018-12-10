@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AdmissionSys.Areas.Identity.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdmissionSys.Pages.Admin.Student
 {
+    [Authorize(Roles = "Admin,Approver")]
     public class allapplicationsModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

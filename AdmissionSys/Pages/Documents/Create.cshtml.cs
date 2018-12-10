@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AdmissionSys.Pages.Documents
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

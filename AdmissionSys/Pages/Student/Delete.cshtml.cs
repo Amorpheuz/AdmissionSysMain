@@ -12,7 +12,7 @@ using System.IO;
 
 namespace AdmissionSys.Pages.Student
 {
-    [Authorize(Roles = "Admin,Applicant")]
+    [Authorize(Roles = "Admin,Applicant,Approver")]
     public class DeleteModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

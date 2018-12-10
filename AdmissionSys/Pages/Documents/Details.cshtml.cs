@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Documents
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class DetailsModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

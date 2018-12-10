@@ -11,7 +11,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.ApplicationList
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Approver")]
     public class EditModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

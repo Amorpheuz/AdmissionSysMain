@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AdmissionSys.Pages.Student
 {
-    [Authorize(Roles = "Admin,Applicant")]
+    [Authorize(Roles = "Admin,Applicant,Approver")]
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

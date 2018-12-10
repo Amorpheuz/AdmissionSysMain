@@ -18,7 +18,7 @@ using Twilio.Types;
 
 namespace AdmissionSys.Pages.ApplicationList
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class DeleteModel : PageModel, ISmsSender
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdmissionSys.Pages.Admin.Student
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin,Approver")]
     public class IndexModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
