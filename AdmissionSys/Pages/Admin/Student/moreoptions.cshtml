@@ -1,0 +1,43 @@
+﻿@page
+@model moreoptionsModel
+@{
+}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>More Options</h2>
+        <hr />
+        <div class="form-group col-md-6">
+            <label class="control-label"> Is Interview Done?</label>
+            <input asp-for="ApplicationList.AttendInterview" class="form-control" />
+            <small class="form-text text-muted">
+                Is Interview Completed Successfully?
+            </small>
+            <span asp-validation-for="ApplicationList.AttendInterview" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label"> Is Conselling Done?</label>
+            <input asp-for="ApplicationList.CounsellingDone" class="form-control" />
+            <small class="form-text text-muted">
+                Is Counselling Completed Successfully?
+            </small>
+            <span asp-validation-for="ApplicationList.CounsellingDone" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label">  Is form Verified?</label>
+            <input asp-for="ApplicationList.FormVerified" class="form-control" />
+            <small class="form-text text-muted">
+                Was the form verified to be valid?
+            </small>
+            <span asp-validation-for="ApplicationList.FormVerified" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label class="control-label"> Is Admission Confirmed?</label>
+            <input asp-for="ApplicationList.AdmissionConfirmed" class="form-control" />
+            <small class="form-text text-muted">
+               Student will be granted admission on checking this box.
+            </small>
+            <span asp-validation-for="ApplicationList.AdmissionConfirmed" class="text-danger"></span>
+        </div>
+
+</div>
+</div>
