@@ -81,7 +81,7 @@ namespace AdmissionSys.Pages.Admin.Student
             }
             else if(ApplicationList.ConfirmFeesPayment)
             {
-                ApplicationList.Status = "Admission Confirmed";
+                ApplicationList.Status = "Fees Paid";
             }
             else if(ApplicationList.AttendInterview==true)
             {
