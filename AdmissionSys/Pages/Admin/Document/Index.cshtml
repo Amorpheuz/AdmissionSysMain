@@ -1,19 +1,11 @@
 ﻿@page
-@model AdmissionSys.Pages.Documents.IndexModel
-
+@model IndexModel
 @{
-    ViewData["Title"] = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    <a asp-page="Create">Create New</a>
-</p>
 <table class="table">
     <thead>
         <tr>
-           
+
             <th>
                 @Html.DisplayNameFor(model => model.Documents[0].DocumentType)
             </th>
@@ -21,18 +13,20 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Documents) {
+        @foreach (var item in Model.Documents)
+        {
         <tr>
-          
             <td>
                 @Html.DisplayFor(modelItem => item.DocumentType)
             </td>
             <td>
-                <a asp-page="./Delete" asp-route-id="@item.DocumentsID">Delete</a>
+               <a href="@Html.DisplayFor(modelItem=>item.DocumentPath)" target="_blank">View Document</a> 
+            </td>
+            <td>
+                <a asp-page="../../Documents/Delete" asp-route-id="@item.DocumentsID">Delete</a>
             </td>
         </tr>
-}
+
+        }
     </tbody>
 </table>
-
-
