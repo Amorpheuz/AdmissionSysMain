@@ -63,6 +63,8 @@ namespace AdmissionSys.Pages.Student
             Student.StudentSignature = "placeholder";
             Student.FillPersonalInfo = true;
             Student.LastOpr = DateTime.Now;
+            Random rr = new Random();
+            Student.StudentID = rr.Next(1000);
             Savephoto();
             await SavesignAsync();
             if (!ModelState.IsValid)

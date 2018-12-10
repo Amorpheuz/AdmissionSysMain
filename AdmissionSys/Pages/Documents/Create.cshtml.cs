@@ -37,7 +37,7 @@ namespace AdmissionSys.Pages.Documents
         [BindProperty]
         public Models.Documents Documents { get; set; }
 
-        public bool render;
+        public bool render=true;
 
         public async Task<IActionResult> OnPostAsync()
         {

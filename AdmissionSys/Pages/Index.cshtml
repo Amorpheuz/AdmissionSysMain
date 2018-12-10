@@ -49,15 +49,98 @@
                     <h6 class="card-subtitle mb-2 text-muted">Check your Application Progress</h6>
                     <hr />
                     <div class="progress" style="height: 25px;">
-                        <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+                        @{
+        int i = 0;
+        if ((Model.Students.FirstOrDefault().FillPersonalInfo) == true)
+        {
+            i++;
+        }
+        if ((Model.ApplicationLists.FirstOrDefault().AcademicRecAdded) == true)
+        {
+            i++;
+        }
+        if ((Model.ApplicationLists.FirstOrDefault().DocumentUploaded) == true)
+        {
+            i++;
+        }
+        if ((Model.ApplicationLists.FirstOrDefault().AttendInterview) == true)
+        {
+            i++;
+        }
+        if ((Model.ApplicationLists.FirstOrDefault().AdmissionConfirmed) == true)
+        {
+            i++;
+        }
+
+        if (i == 1)
+        {
+                    <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 20%;" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">20%</div>
+}
+else if (i == 2)
+{
+                    <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 40%;" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100">40%</div>
+}
+else if (i == 3)
+{
+                    <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 60%;" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100">60%</div>
+}
+else if (i == 4)
+{
+                    <div class="progress-bar bg-primary-v3" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+}
+else if (i == 5)
+{
+                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100">100%</div>
+}
+                        }
+
                     </div>
                     <p class="card-text">
                         <ul>
-                            <li class="text-success">Add Personal Information</li>
-                            <li class="text-success">Add Academic Records</li>
-                            <li class="text-success">Upload Documents</li>
-                            <li class="text-danger">Attend Interview</li>
-                            <li class="text-danger">Confirm Fees Payment</li>
+                            @if ((Model.Students.FirstOrDefault().FillPersonalInfo) == true)
+    {
+                        <li class="text-success">Add Personal Information</li>
+}
+else
+{
+                        <li class="text-danger">Add Personal Information</li>
+}
+
+                            @if ((Model.ApplicationLists.FirstOrDefault().AcademicRecAdded) == true)
+    {
+                        <li class="text-success">Add Academic Records</li>
+}
+else
+{
+                        <li class="text-danger">Add Academic Records</li>
+}
+
+                            @if ((Model.ApplicationLists.FirstOrDefault().DocumentUploaded) == true)
+    {
+                        <li class="text-success">Upload Documents</li>
+}
+else
+{
+                        <li class="text-danger">Upload Documents</li>
+}
+                            @if ((Model.ApplicationLists.FirstOrDefault().AttendInterview) == true)
+    {
+                        <li class="text-success">Attend Interview</li>
+}
+else
+{
+                        <li class="text-danger">Attend Interview</li>
+}
+                            @if ((Model.ApplicationLists.FirstOrDefault().AdmissionConfirmed) == true)
+    {
+                        <li class="text-success">Admission Confirmed</li>
+}
+else
+{
+                        <li class="text-danger">Admission Confirmed</li>
+}
+
+
                         </ul>
                     </p>
                 </div>
@@ -93,69 +176,168 @@
     </div>
 </div>
 <div class="row">
+
+
+
     <div class="col-md-10 offset-md-1">
         <div class="card-deck mb-3">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Step 1</h5>
-                    <h6 class="card-subtitle mb-2 ">Fill your personal Information</h6>
-                    <hr />
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
-                        <a class="btn text-light card-link disabled" asp-page="/Student">Click here</a>
-                    </p>
-                </div>
+            @if ((Model.Students.FirstOrDefault().FillPersonalInfo) == true)
+    {
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Step 1</h5>
+                <h6 class="card-subtitle mb-2 ">Fill your personal Information</h6>
+                <hr />
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                    <a class="btn text-light card-link disabled" asp-page="/Student/Create">Click here</a>
+                </p>
             </div>
-            <div class="card">
-                <div class="card-body bg-success text-white">
-                    <h5 class="card-title">Step 2</h5>
-                    <h6 class="card-subtitle mb-2 ">Add Academic Records</h6>
-                    <hr />
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
-                        <a class="card-link text-light btn disabled" asp-page="/AcademicRecord">Click here</a>
-                    </p>
-                </div>
+        </div>
+}
+else
+{
+        <div class="card border-primary-v3">
+            <div class="card-body">
+                <h5 class="card-title">Step 1</h5>
+                <h6 class="card-subtitle mb-2 ">Fill your personal Information</h6>
+                <hr />
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                    <a class="card-link text-primary-v3" asp-page="/Student/Create">Click here</a>
+                </p>
             </div>
+        </div>
+}
+            @if ((Model.ApplicationLists.FirstOrDefault().AcademicRecAdded) == true)
+    {
+        <div class="card">
+            <div class="card-body bg-success text-white">
+                <h5 class="card-title">Step 2</h5>
+                <h6 class="card-subtitle mb-2 ">Add Academic Records</h6>
+                <hr />
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                    <a class="card-link text-light btn disabled" asp-page="/AcademicRecord/Index">Click here</a>
+                </p>
+            </div>
+        </div>
+}
+            else{
+        <div class="card border-primary-v3">
+            <div class="card-body">
+                <h5 class="card-title">Step 2</h5>
+                <h6 class="card-subtitle mb-2 ">Add Academic Records</h6>
+                <hr />
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                    <a class="card-link text-primary-v3" asp-page="/AcademicRecord/Index">Click here</a>
+                </p>
+            </div>
+        </div>
+            }
         </div>
     </div>
 </div>
 <div class="row">
+
+
+
     <div class="col-md-10 offset-md-1">
         <div class="card-deck mb-3">
-            <div class="card bg-success text-white">
-                <div class="card-body">
-                    <h5 class="card-title">Step 3</h5>
-                    <h6 class="card-subtitle mb-2 ">Upload Documents</h6>
-                    <hr />
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
-                        <a class="card-link text-light btn disabled" asp-page="/Student">Click here</a>
-                    </p>
+            @if ((Model.ApplicationLists.FirstOrDefault().DocumentUploaded) == true)
+            {
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Step 3</h5>
+                        <h6 class="card-subtitle mb-2 ">Upload Documents</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                            <a class="btn text-light card-link disabled" asp-page="/Documents/Create">Click here</a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-body border-primary-v3">
-                    <h5 class="card-title">Step 4</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Attend Interview</h6>
-                    <hr />
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
-                        <a class="card-link text-primary-v3" asp-page="/Student">Click here</a>
-                    </p>
+            }
+            else
+            {
+                <div class="card border-primary-v3">
+                    <div class="card-body">
+                        <h5 class="card-title">Step 3</h5>
+                        <h6 class="card-subtitle mb-2 ">Upload Documents</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                            <a class="card-link text-primary-v3" asp-page="/Documents/Create">Click here</a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Step 5</h5>
-                    <h6 class="card-subtitle mb-2 text-muted">Confirm Fees Payment</h6>
-                    <hr />
-                    <p class="card-text">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
-                        <a class="card-link text-primary-v3" asp-page="/Student">Click here</a>
-                    </p>
+            }
+            @if ((Model.ApplicationLists.FirstOrDefault().AttendInterview) == true)
+            {
+                <div class="card">
+                    <div class="card-body bg-success text-white">
+                        <h5 class="card-title">Step 4</h5>
+                        <h6 class="card-subtitle mb-2 ">Attend Interview</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+                           
+                        </p>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="card border-primary-v3">
+                    <div class="card-body ">
+                        <h5 class="card-title">Step 4</h5>
+                        <h6 class="card-subtitle mb-2 ">Attend Interview</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+
+                        </p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+
+
+
+    <div class="col-md-10 offset-md-1">
+        <div class="card-deck mb-3">
+            @if ((Model.ApplicationLists.FirstOrDefault().AdmissionConfirmed) == true)
+            {
+                <div class="card bg-success text-white">
+                    <div class="card-body">
+                        <h5 class="card-title">Step 5</h5>
+                        <h6 class="card-subtitle mb-2 ">Admission Confirmed</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+
+                        </p>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="card border-primary-v3">
+                    <div class="card-body">
+                        <h5 class="card-title">Step 3</h5>
+                        <h6 class="card-subtitle mb-2 ">Admission Confirmed</h6>
+                        <hr />
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed augue massa, blandit vitae tempor id, ullamcorper vitae massa. Suspendisse pretium consequat tincidunt. Nunc a auctor sem. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus sapien nunc, gravida id blandit eget, efficitur vel urna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque rutrum, sapien non aliquet tempor, risus felis pulvinar eros, in scelerisque risus quam et turpis. Cras eget mauris eu arcu faucibus accumsan pretium vitae felis. Maecenas vel tortor lorem.
+
+                        </p>
+                    </div>
+                </div>
+            }
         </div>
     </div>
 </div>
