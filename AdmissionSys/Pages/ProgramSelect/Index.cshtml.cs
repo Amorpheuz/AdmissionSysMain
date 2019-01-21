@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AdmissionSys.Pages.ProgramSelect
 {
-    [Authorize(Roles = "Admin,Applicant")]
+    [Authorize(Roles = "Admin,Applicant,Approver")]
     public class IndexModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

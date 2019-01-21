@@ -1,0 +1,83 @@
+﻿@page
+@using AdmissionSys.Models
+@model moreoptionsModel
+@{
+}
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <h2>More Options</h2>
+        <hr />
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ApplicationList.ApplicationListID" />
+            <input type="hidden" asp-for="ApplicationList.AcademicRecAdded" />
+            <input type="hidden" asp-for="ApplicationList.LastOpr" />
+            <input type="hidden" asp-for="ApplicationList.DocumentUploaded" />
+            <input type="hidden" asp-for="ApplicationList.Status" />
+
+            <input type="hidden" name="sid" value="@ViewData["sid"]" />
+            <input type="hidden" name="pid" value="@ViewData["pid"]" />
+            <div class="form-group col-md-6">
+                <label class="control-label">  Is form Verified?</label>
+                <input asp-for="ApplicationList.FormVerified"  class="form-control" />
+                <small class="form-text text-muted">
+                    Is the form verified to be valid?
+                </small>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Is Conselling Done?</label>
+                <input asp-for="ApplicationList.CounsellingDone"  class="form-control" />
+                <small class="form-text text-muted">
+                    Is Counselling Completed Successfully?
+                </small>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Is Interview Done?</label>
+                <input asp-for="ApplicationList.AttendInterview" class="form-control" />
+                <small class="form-text text-muted">
+                    Is Interview Completed Successfully?
+                </small>
+
+            </div>
+            <div class="form-group col-md-6">
+                <label class="control-label"> Is Admission Fees Paid?</label>
+                <input asp-for="ApplicationList.ConfirmFeesPayment"  class="form-control" />
+                <small class="form-text text-muted">
+                    Is Counselling Completed Successfully?
+                </small>
+
+            </div>
+
+
+            <div class="form-group col-md-6">
+                <label class="control-label"> Is Admission Confirmed?</label>
+                <input asp-for="ApplicationList.AdmissionConfirmed"  class="form-control" />
+                <small class="form-text text-muted">
+                    Student will be granted admission on checking this box.
+                </small>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationList.ApplicationCat" class="control-label"></label>
+                <select asp-for="ApplicationList.ApplicationCat" class="form-control" asp-items="Html.GetEnumSelectList(typeof(ApplicationCat))"></select>
+                <span asp-validation-for="ApplicationList.ApplicationCat" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary-v3" />
+            </div>
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+@*<script>
+    //function selectOnlyThis(id) {
+      //  for (var i = 1;i <= 5; i++)
+        {
+            document.getElementById(i).checked = false;
+        }
+        document.getElementById(id).checked = true;
+    }</script>*@

@@ -14,7 +14,7 @@ using System.IO;
 
 namespace AdmissionSys.Pages.Documents
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class CreateModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
@@ -37,7 +37,7 @@ namespace AdmissionSys.Pages.Documents
         [BindProperty]
         public Models.Documents Documents { get; set; }
 
-        public bool render;
+        public bool render=true;
 
         public async Task<IActionResult> OnPostAsync()
         {

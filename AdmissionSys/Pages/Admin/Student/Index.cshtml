@@ -70,6 +70,7 @@
                         @Html.DisplayFor(modelItem => item.LastOpr)
                     </td>
                     <td>
+                        <a asp-page="./allapplications" asp-route-id="@item.StudentID">View Applications</a> |
                         <a asp-page="../Document/Index" asp-route-id="@item.StudentID">View Documents</a> |
                         <a asp-page="../../Student/Edit" asp-route-id="@item.StudentID">Edit</a> |
                         <a asp-page="./Details" asp-route-id="@item.StudentID">Details</a> |

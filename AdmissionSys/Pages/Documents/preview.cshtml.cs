@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AdmissionSys.Areas.Identity.Data;
 using AdmissionSys.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace AdmissionSys.Pages.Documents
 {
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class previewModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;

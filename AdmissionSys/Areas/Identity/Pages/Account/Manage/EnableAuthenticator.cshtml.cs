@@ -149,7 +149,7 @@ namespace AdmissionSys.Areas.Identity.Pages.Account.Manage
         {
             return string.Format(
                 AuthenticatorUriFormat,
-                _urlEncoder.Encode("AdmissionSys"),
+                _urlEncoder.Encode("TF Admission System"),
                 _urlEncoder.Encode(email),
                 unformattedKey);
         }

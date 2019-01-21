@@ -7,29 +7,30 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
-namespace AdmissionSys.Pages.Admin.Document
+namespace AdmissionSys.Pages.Admin.Student
 {
     [Authorize(Roles = "Admin,Approver")]
-    public class IndexModel : PageModel
+    public class allapplicationsModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
         private readonly UserManager<NuvAdUser> _userManager;
-        private Task<NuvAdUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
 
-        public IndexModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
+        public allapplicationsModel(AdmissionSys.Models.AdmissionSysContext context, UserManager<NuvAdUser> userManager)
         {
             _userManager = userManager;
             _context = context;
+
         }
 
-        public IList<Models.Documents> Documents { get; set; }
+        public IList<Models.ApplicationList> ApplicationList { get; set; }
 
-        public void OnGet(int? id)
+        public async Task OnGetAsync(int? id)
         {
-            var DocumentsIQ = from a in _context.Documents select a;
+            ApplicationList = await _context.ApplicationList
+                .Include(a => a.Programs).Where(c => c.StudentID == id).ToListAsync();
 
-            Documents = DocumentsIQ.Where(b => b.StudentID == id).ToList();
         }
 
     }

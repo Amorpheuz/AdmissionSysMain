@@ -12,7 +12,7 @@ using AdmissionSys.Areas.Identity.Data;
 
 namespace AdmissionSys.Pages.Documents
 {
-    [Authorize(Roles = "Applicant,Admin")]
+    [Authorize(Roles = "Applicant,Admin,Approver")]
     public class IndexModel : PageModel
     {
         private readonly AdmissionSys.Models.AdmissionSysContext _context;
